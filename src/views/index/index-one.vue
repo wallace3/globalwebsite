@@ -120,15 +120,6 @@
                             1024: { slidesPerView: 3, spaceBetween: 20 },
                         }"
                         class="owl-carousel hv1-pdct-ctgry-slider block"> 
-                        <swiper-slide v-for="(item, index) in categoryOne" :key="index" class="relative block">
-                            <img class="w-full object-cover" :src="item.image" alt="product"/>
-                            <div class="absolute bottom-7 left-0 px-5 transform w-full flex justify-start">
-                                <div class="p-[15px] bg-white dark:bg-title w-auto">
-                                    <span class="md:text-xl text-primary font-medium leading-none">{{item.item}}</span>
-                                    <h4 class="text-xl md:text-2xl mt-[10px] font-semibold leading-[1.5]">{{item.name}}</h4>
-                                </div>
-                            </div>
-                        </swiper-slide>
                         <swiper-slide v-for="(item, index) in categories" :key="index" class="relative block">
                             <img class="w-full object-cover" :src="'http://localhost:8080/' + item.url" alt="product"/>
                             <div class="absolute bottom-7 left-0 px-5 transform w-full flex justify-start">
@@ -150,11 +141,11 @@
                     <div>  
                         <img :src="sofa" alt="" class="mx-auto w-14 sm:w-24"/>                                             
                     </div>
-                    <h3 class="leading-none mt-4 md:mt-6 text-2xl md:text-3xl">New Products</h3>
-                    <p class="mt-3">Be the first to experience innovation with our latest arrivals. Stay ahead of the curve and discover what's new in style, technology, and more. </p>
+                    <h3 class="leading-none mt-4 md:mt-6 text-2xl md:text-3xl">Nuevos Productos</h3>
+                    <p class="mt-3">Explora nuestros productos reciend añadidos al inventario y se el primero en tener la posibilidad de adquirirlos. </p>
                 </div>
                 <div data-aos="fade-up" data-aos-delay="100">
-                    <LayoutOne :productList="productList.slice(0,4)" :classList="'max-w-[1720px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-8'"/>
+                    <LayoutOne :productList="products.slice(0,4)" :classList="'max-w-[1720px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-8'"/>
                 </div>
                 <div class="text-center mt-7 md:mt-12">
                     <router-link to="/shop-v1" class="btn btn-outline" data-text="All Products">
@@ -355,18 +346,21 @@
     import { Autoplay, Pagination,Navigation } from 'swiper/modules';
     import 'swiper/swiper-bundle.css';
 
-    import { categoryOne,productList,featureOne } from '@/data/data';
+    import { productList,featureOne } from '@/data/data';
    
     import Aos from 'aos';
     import 'aos/dist/aos.css';
+
     const banners = ref([]);
     const categories = ref([]);
+    const products = ref([]);
 
 
     onMounted(() => {
         Aos.init()
         getBanners();
         getCategories();
+        getProducts();
     });
 
     const getBanners = async () => {
@@ -377,8 +371,6 @@
             }
             const data = await result.json();
             banners.value = Array.isArray(data) ? data : [];
-            console.log(banners);
-            
         }catch (error){
             console.log(error);
         }
@@ -392,8 +384,19 @@
             }
             const data = await result.json();
             categories.value = Array.isArray(data) ? data : [];
-            console.log(categories);
-            
+        }catch (error){
+            console.log(error);
+        }
+    }
+    
+    const getProducts = async () => {
+        try{
+            const result = await fetch('http://localhost:8080/products/categories');
+            if(!result.ok){
+                throw new Error(`Error HTTP: ${result.status}`);
+            }
+            const data = await result.json();
+            products.value = Array.isArray(data) ? data : [];
         }catch (error){
             console.log(error);
         }

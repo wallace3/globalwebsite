@@ -2,20 +2,20 @@
     <div :class="classList">
         <div v-for="(item, index) in productList" :key="index" class="group">
             <div class="relative overflow-hidden">
-                <router-link :to="`/product-details/${item.id}`">
-                    <img class="w-full transform group-hover:scale-110 duration-300" :src="item.image" alt="shop"/>
+                <router-link :to="`/product-details/${item.idProduct}`">
+                    <img class="w-full transform group-hover:scale-110 duration-300" :src="'http://localhost:8080/' + item.image_url" alt="shop"/>
                 </router-link>
 
-                <div v-if="item.tag === 'Hot Sale'" class="absolute z-10 top-7 left-7 pt-[10px] pb-2 px-3 bg-[#1CB28E] rounded-[30px] font-primary text-[14px] text-white font-semibold leading-none">
+                <!--<div v-if="item.tag === 'Hot Sale'" class="absolute z-10 top-7 left-7 pt-[10px] pb-2 px-3 bg-[#1CB28E] rounded-[30px] font-primary text-[14px] text-white font-semibold leading-none">
                     Hot Sale
-                </div>
-            
-                <div v-if="item.tag === 'NEW'" class="absolute z-10 top-7 left-7 pt-[10px] pb-2 px-3 bg-[#9739E1] rounded-[30px] font-primary text-[14px] text-white font-semibold leading-none">
-                    NEW
                 </div>
                 <div v-if="item.tag === '10% OFF'" class="absolute z-10 top-7 left-7 pt-[10px] pb-2 px-3 bg-[#E13939] rounded-[30px] font-primary text-[14px] text-white font-semibold leading-none">
                     10% OFF
+                </div>-->
+                <div class="absolute z-10 top-7 left-7 pt-[10px] pb-2 px-3 bg-[#9739E1] rounded-[30px] font-primary text-[14px] text-white font-semibold leading-none">
+                    NUEVO
                 </div>
+               
                 <div class="absolute z-10 top-[50%] right-3 transform -translate-y-[40%] opacity-0 duration-300 transition-all group-hover:-translate-y-1/2 group-hover:opacity-100 flex flex-col items-end gap-3">
                     <router-link to="#" class="bg-white dark:bg-title dark:text-white bg-opacity-80 flex items-center justify-center gap-2 px-4 py-[10px] text-base leading-none text-title rounded-[40px] h-14 overflow-hidden new-product-icon">
                         <i class="mdi mdi-cards-heart-outline dark:text-white text-[24px]"></i>                                                                     
@@ -39,14 +39,14 @@
                             {{item.name}}
                         </router-link>
                     </h5>
-                    <ul class="flex items-center gap-2 mt-1">
+                    <!--<ul class="flex items-center gap-2 mt-1">
                         <li><i class="fa-solid fa-star text-[#EE9818] text-[14px]"></i></li>
                         <li><i class="fa-solid fa-star text-[#EE9818] text-[14px]"></i></li>
                         <li><i class="fa-solid fa-star text-[#EE9818] text-[14px]"></i></li>
                         <li><i class="fa-solid fa-star text-[#EE9818] text-[14px]"></i></li>
                         <li><i class="fa-solid fa-star text-slate-300 text-[14px]"></i></li>
                         <li class="dark:text-gray-100">( 1,230 )</li>
-                    </ul>
+                    </ul>-->
                 </div>
             </div>
         </div>

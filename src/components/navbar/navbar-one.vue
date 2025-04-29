@@ -10,7 +10,7 @@
                 <div class="main-menu absolute z-50 w-full lg:w-auto top-full left-0 lg:static bg-white dark:bg-title lg:bg-transparent lg:dark:bg-transparent px-5 sm:px-[30px] py-[10px] sm:py-5 lg:px-0 lg:py-0" :class="toggle ? 'active' : ''">
                     <ul class="text-lg leading-none text-title dark:text-white lg:flex lg:gap-[30px]">
                         <li class="relative" :class="['/','/index-v2','/index-v3','/index-v4','/index-v5','/index-v6'].includes(current) ? 'active' : ''">
-                            <router-link to="#">Home<span></span></router-link>
+                            <router-link to="#">Inicio<span></span></router-link>
                             <ul class="sub-menu lg:absolute z-50 lg:top-full lg:left-0 lg:min-w-[220px] lg:invisible lg:transition-all lg:bg-white lg:dark:bg-title lg:py-[15px] lg:pr-[30px]">
                                 <li :class="current === '/' ? 'active' : ''"><router-link to="/" class="menu-item">Home Minimal</router-link></li>
                                 <li :class="current === '/index-v2' ? 'active' : ''"><router-link to="/index-v2" class="menu-item">Home Stylish</router-link></li>
@@ -47,7 +47,7 @@
                                     <div class="megamenu-item">
                                         <ul>
                                             <li :class="current === '/my-profile' ? 'active' : ''"><router-link to="/my-profile">My Profile</router-link></li>
-                                            <li :class="current === '/login' ? 'active' : ''"><router-link to="/login">Login</router-link></li>
+                                            <li :class="current === '/login' ? 'active' : ''"><router-link to="/login">Inicio sesión</router-link></li>
                                             <li :class="current === '/register' ? 'active' : ''"><router-link to="/register">Register</router-link></li>
                                             <li :class="current === '/forger-password' ? 'active' : ''"><router-link to="/forger-password">Forget Password</router-link></li>
                                             <li :class="current === '/coming-soon' ? 'active' : ''"><router-link to="/coming-soon">Coming Soon</router-link></li>
@@ -96,7 +96,7 @@
                             </ul>
                         </li>
                         <li :class="current === '/contact' ? 'active' : ''"><router-link to="/contact">Contact</router-link></li>
-                        <li :class="current === '/login' ? 'active' : ''" class="lg:hidden"><router-link to="/login">Login</router-link></li>
+                        <li :class="current === '/login' ? 'active' : ''" class="lg:hidden"><router-link to="/login">Inicio Sesión</router-link></li>
                     </ul>
                 </div>
 
@@ -109,8 +109,8 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 
-import logoDark from '@/assets/img/svg/logo.svg'
-import logoLight from '@/assets/img/svg/logo-light.svg'
+import logoDark from '@/assets/img/logo.png'
+import logoLight from '@/assets/img/logo.png'
 
 import NavMenuOne from './nav-menu-one.vue';
 

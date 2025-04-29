@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/no-mutating-props -->
 <template>
     <div class="flex items-center gap-4 sm:gap-6">
-        <router-link to="/login" class="text-lg leading-none text-title dark:text-white transition-all duration-300 hover:text-primary hidden lg:block">Login</router-link>
+        <router-link to="/login" class="text-lg leading-none text-title dark:text-white transition-all duration-300 hover:text-primary hidden lg:block">Ingresar</router-link>
         <button class="hdr_search_btn" aria-label="search">
             <i class="mdi mdi-magnify text-title dark:text-white text-[24px] sm:text-[28px]"></i>
         </button>
