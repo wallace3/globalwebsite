@@ -164,8 +164,8 @@
                             <div> 
                                 <img :src="like" class="w-14 sm:w-24" alt="" />                                                       
                             </div>
-                            <h3 class="leading-none mt-4 md:mt-6 text-2xl md:text-3xl">Why you Choose Us</h3>
-                            <p class="mt-3">Choose us for unparalleled quality, exceptional service, and a commitment to your satisfaction. Join countless others who rely on us for reliability. </p>
+                            <h3 class="leading-none mt-4 md:mt-6 text-2xl md:text-3xl">¿Por qué adquirir productos en global?</h3>
+                            <p class="mt-3">Global, cuenta con un equipo especializado en piezas de todo tipo, se garantiza que, todo producto que se venda en el sitio, ha sido estudiado.</p>
                         </div>
                         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-[30px]">
                             <div v-for="(item, index) in featureOne.slice(0,4)" :key="index" class="why-choose-card p-6 rounded-[10px]" data-aos="fade-up" :ata-aos-delay="item.delay">
@@ -278,37 +278,7 @@
             </div>
         </div>
 
-        <div class="s-py-50">
-            <div class="container-fluid">
-                <div class="max-w-[1720px] mx-auto">
-                    <div class="max-w-xl mx-auto mb-8 md:mb-12 text-center" data-aos="fade-up">
-                        <div> 
-                            <img :src="comment" class="mx-auto w-14 sm:w-24" alt="" />                                               
-                        </div>
-                        <h3 class="leading-none mt-4 md:mt-6 text-2xl md:text-3xl">Latest Blog</h3>
-                        <p class="mt-3">Stay informed and inspired with our latest blog posts. Explore insightful content that keeps you ahead of trends and informed on topics you love. </p>
-                    </div>
-
-                    <BlogOne/>
-                </div>
-            </div>
-        </div>
-
-        <div class="s-py-50-100">
-            <div class="container-fluid">
-                <div class="max-w-xl mx-auto mb-8 md:mb-12 text-center" data-aos="fade-up">
-                    <div>
-                        <img :src="hand" class="size-16 mx-auto" alt="">                                            
-                    </div>
-                    <h3 class="leading-none mt-4 md:mt-6 text-2xl md:text-3xl">Trusted Partner</h3>
-                    <p class="mt-3">Count on our trusted partnerships to deliver excellence. Collaborating with industry leaders ensures top-quality products and services for your satisfaction. </p>
-                </div>
-                <div data-aos="fade-up" data-aos-delay="100">
-                    <PartnerOne/>
-                </div>
-            </div>
-        </div>
-
+  
         <FooterOne/>
 
         <ScrollToTop/>
@@ -328,16 +298,16 @@
     import sofa from '@/assets/img/svg/sofa.svg'
     import like from "@/assets/img/svg/like.svg"
     import bed from "@/assets/img/svg/bed.svg"
-    import hand from '@/assets/img/svg/hand.svg'
+    //import hand from '@/assets/img/svg/hand.svg'
     import product1 from '@/assets/img/home-v1/ftur-pdct-01.jpg'
     import product2 from '@/assets/img/home-v1/ftur-pdct-02.jpg'
-    import comment from '@/assets/img/svg/comment.svg'
+    //import comment from '@/assets/img/svg/comment.svg'
 
 
     import NavbarOne from '@/components/navbar/navbar-one.vue';
     import LayoutOne from '@/components/product/layout-one.vue';
-    import BlogOne from '@/components/blog/blog-one.vue';
-    import PartnerOne from '@/components/partner/partner-one.vue';
+    //import BlogOne from '@/components/blog/blog-one.vue';
+    //import PartnerOne from '@/components/partner/partner-one.vue';
     import FooterOne from '@/components/footer/footer-one.vue';
     import ScrollToTop from '@/components/scroll-to-top.vue';
 
