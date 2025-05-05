@@ -1,6 +1,6 @@
 <template>
     <div>
-        <NavbarOne/>
+        <NavbarOne :carrito="carrito" @quitar="quitarDelCarrito" />
     
         <swiper 
             :modules="[Autoplay, Pagination]"
@@ -145,7 +145,7 @@
                     <p class="mt-3">Explora nuestros productos reciend añadidos al inventario y se el primero en tener la posibilidad de adquirirlos. </p>
                 </div>
                 <div data-aos="fade-up" data-aos-delay="100">
-                    <LayoutOne :productList="products.slice(0,4)" :classList="'max-w-[1720px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-8'"/>
+                    <LayoutOne :productList="products.slice(0,4)" :classList="'max-w-[1720px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-8'"  @agregar="agregarAlCarrito"/>
                 </div>
                 <div class="text-center mt-7 md:mt-12">
                     <router-link to="/shop-v1" class="btn btn-outline" data-text="All Products">
@@ -190,7 +190,7 @@
                 </div>
                 <div class="max-w-[1720px] mx-auto flex gap-5 sm:gap-8 flex-col lg:flex-row" data-aos="fade-up" data-aos-delay="100">
 
-                    <LayoutOne :productList="productList.slice(8,12)" :classList="'grid sm:grid-cols-2 gap-5 sm:gap-8 lg:max-w-[766px] w-full'"/>
+                    <LayoutOne :productList="productList.slice(8,12)" :classList="'grid sm:grid-cols-2 gap-5 sm:gap-8 lg:max-w-[766px] w-full'"  @agregar="agregarAlCarrito"/>
 
                     <div class="grid sm:grid-cols-2 gap-5 sm:gap-8 lg:max-w-[925px] w-full">
                         <div class="group flex flex-col">
@@ -324,7 +324,7 @@
     const banners = ref([]);
     const categories = ref([]);
     const products = ref([]);
-
+    const carrito = ref([])
 
     onMounted(() => {
         Aos.init()
@@ -371,6 +371,17 @@
             console.log(error);
         }
     }
+
+    function agregarAlCarrito(producto) {
+        // Verificar si el producto ya está en el carrito
+        if (!carrito.value.some(item => item.idProduct === producto.idProduct)) {
+            carrito.value.push(producto)
+        }
+        }
+
+        function quitarDelCarrito(productoId) {
+  carrito.value = carrito.value.filter(item => item.idProduct !== productoId)
+}
 
 
 </script>

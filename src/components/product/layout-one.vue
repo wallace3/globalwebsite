@@ -23,7 +23,7 @@
                     </router-link>
                     <router-link to="#" class="bg-white dark:bg-title dark:text-white bg-opacity-80 flex items-center justify-center gap-2 px-4 py-[10px] text-base leading-none text-title rounded-[40px] h-14 overflow-hidden new-product-icon">
                         <i class="mdi mdi-shopping-outline dark:text-white text-[24px]"></i>     
-                        <span class="mt-1">Add to Cart</span>
+                        <button @click="addToCart(item)"><span class="mt-1">Add to Cart</span></button>
                     </router-link>
                     <button class="bg-white dark:bg-title dark:text-white bg-opacity-80 flex items-center justify-center gap-2 px-4 py-[10px] text-base leading-none text-title rounded-[40px] h-14 overflow-hidden new-product-icon quick-view">
                         <i class="mdi mdi-eye-outline dark:text-white text-[24px]"></i>                                       
@@ -55,11 +55,19 @@
 
 <script setup>
 
-    import { defineProps } from 'vue';
+    import { defineProps, defineEmits } from 'vue';
+    import { useCartStore } from '@/stores/useCartStore'
 
+    const cart = useCartStore()
     defineProps({
         productList:Array,
         classList:String
     })
+
+    const emit = defineEmits(['agregar'])
+
+    function addToCart(producto) {
+        cart.agregar(producto)
+    }
 
 </script>

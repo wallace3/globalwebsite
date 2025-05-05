@@ -1,6 +1,6 @@
 <template>
     <div>
-        <NavbarOne/>
+        <NavbarOne  :carrito="carrito" @quitar="quitarDelCarrito"/>
 
         <div class="flex items-center gap-4 flex-wrap bg-overlay p-14 sm:p-16 before:bg-title before:bg-opacity-70" :style="{backgroundImage:'url('+ bg +')'}">
             <div class="text-center w-full">
