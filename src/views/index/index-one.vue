@@ -1,6 +1,6 @@
 <template>
     <div>
-        <NavbarOne :carrito="carrito" @quitar="quitarDelCarrito" />
+        <NavbarOne />
     
         <swiper 
             :modules="[Autoplay, Pagination]"
@@ -179,108 +179,7 @@
             </div>
         </div>
 
-        <div class="s-py-100-50">
-            <div class="container-fluid">
-                <div class="max-w-xl mx-auto mb-8 md:mb-12 text-center" data-aos="fade-up">
-                    <div>
-                        <img :src="bed" class="mx-auto w-14 sm:w-24" alt="" />                                              
-                    </div>
-                    <h3 class="leading-none mt-4 md:mt-6 text-2xl md:text-3xl">Featured Products</h3>
-                    <p class="mt-3">Discover our handpicked selection of standout products. Elevate your lifestyle with our top picks that combine quality, style, and innovation. </p>
-                </div>
-                <div class="max-w-[1720px] mx-auto flex gap-5 sm:gap-8 flex-col lg:flex-row" data-aos="fade-up" data-aos-delay="100">
-
-                    <LayoutOne :productList="productList.slice(8,12)" :classList="'grid sm:grid-cols-2 gap-5 sm:gap-8 lg:max-w-[766px] w-full'"  @agregar="agregarAlCarrito"/>
-
-                    <div class="grid sm:grid-cols-2 gap-5 sm:gap-8 lg:max-w-[925px] w-full">
-                        <div class="group flex flex-col">
-                            <div class="relative overflow-hidden flex-1">
-                                <router-link to="/product-details">
-                                    <img class="w-full transform group-hover:scale-110 duration-300 h-full object-cover" :src="product1" alt="product-card"/>
-                                </router-link>
-
-                                <div class="absolute z-10 top-[50%] right-3 transform -translate-y-[40%] opacity-0 duration-300 transition-all group-hover:-translate-y-1/2 group-hover:opacity-100 flex flex-col items-end gap-3">
-                                    <router-link to="#" class="bg-white dark:bg-title dark:text-white bg-opacity-80 flex items-center justify-center gap-2 px-4 py-[10px] text-base leading-none text-title rounded-[40px] h-14 overflow-hidden new-product-icon">
-                                        <i class="mdi mdi-cards-heart-outline dark:text-white text-[24px]"></i>                                                                     
-                                        <span class="mt-1">Add to wishlist</span>
-                                    </router-link>
-                                    <router-link to="#" class="bg-white dark:bg-title dark:text-white bg-opacity-80 flex items-center justify-center gap-2 px-4 py-[10px] text-base leading-none text-title rounded-[40px] h-14 overflow-hidden new-product-icon">
-                                        <i class="mdi mdi-shopping-outline dark:text-white text-[24px]"></i>    
-                                        <span class="mt-1">Add to Cart</span>
-                                    </router-link>
-                                    <button class="bg-white dark:bg-title dark:text-white bg-opacity-80 flex items-center justify-center gap-2 px-4 py-[10px] text-base leading-none text-title rounded-[40px] h-14 overflow-hidden new-product-icon quick-view">
-                                        <i class="mdi mdi-eye-outline dark:text-white text-[24px]"></i>                                      
-                                        <span class="mt-1">Quick View</span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="lg:pt-6 pt-5 flex gap-3 md:gap-4 flex-col">
-                                <h4 class="font-medium leading-none dark:text-white text-lg">$122.75  <span class="text-title/50 line-through pl-2 inline-block">$140.99</span></h4>
-                                <div>
-                                    <h5 class="font-normal dark:text-white text-xl leading-[1.5]">
-                                        <router-link to="/product-details" class="text-underline">
-                                            Convertible Sofa
-                                        </router-link>
-                                    </h5>
-                                    <ul class="flex items-center gap-2 mt-1">
-                                        <li><i class="fa-solid fa-star text-[#EE9818] text-[14px]"></i></li>
-                                        <li><i class="fa-solid fa-star text-[#EE9818] text-[14px]"></i></li>
-                                        <li><i class="fa-solid fa-star text-[#EE9818] text-[14px]"></i></li>
-                                        <li><i class="fa-solid fa-star text-[#EE9818] text-[14px]"></i></li>
-                                        <li><i class="fa-solid fa-star text-slate-300 text-[14px]"></i></li>
-                                        <li class="dark:text-gray-100">( 1,230 )</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="group flex flex-col">
-                            <div class="relative overflow-hidden flex-1">
-                                <router-link to="/product-details">
-                                    <img class="w-full transform group-hover:scale-110 duration-300 h-full object-cover" :src="product2" alt="product-card"/>
-                                </router-link>
-
-                                <div class="absolute z-10 top-[50%] right-3 transform -translate-y-[40%] opacity-0 duration-300 transition-all group-hover:-translate-y-1/2 group-hover:opacity-100 flex flex-col items-end gap-3">
-                                    <router-link to="#" class="bg-white dark:bg-title dark:text-white bg-opacity-80 flex items-center justify-center gap-2 px-4 py-[10px] text-base leading-none text-title rounded-[40px] h-14 overflow-hidden new-product-icon">
-                                        <i class="mdi mdi-cards-heart-outline dark:text-white text-[24px]"></i>                                                                     
-                                        <span class="mt-1">Add to wishlist</span>
-                                    </router-link>
-                                    <router-link to="#" class="bg-white dark:bg-title dark:text-white bg-opacity-80 flex items-center justify-center gap-2 px-4 py-[10px] text-base leading-none text-title rounded-[40px] h-14 overflow-hidden new-product-icon">
-                                        <i class="mdi mdi-shopping-outline dark:text-white text-[24px]"></i>     
-                                        <span class="mt-1">Add to Cart</span>
-                                    </router-link>
-                                    <button class="bg-white dark:bg-title dark:text-white bg-opacity-80 flex items-center justify-center gap-2 px-4 py-[10px] text-base leading-none text-title rounded-[40px] h-14 overflow-hidden new-product-icon quick-view">
-                                        <i class="mdi mdi-eye-outline dark:text-white text-[24px]"></i>                                         
-                                        <span class="mt-1">Quick View</span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="lg:pt-6 pt-5 flex gap-3 md:gap-4 flex-col">
-                                <h4 class="font-medium leading-none dark:text-white text-lg">$122.75 - $140.99</h4>
-                                <div>
-                                    <h5 class="font-normal dark:text-white text-xl leading-[1.5]">
-                                        <router-link to="/product-details" class="text-underline">
-                                            Flower vase for Table
-                                        </router-link>
-                                    </h5>
-                                    <ul class="flex items-center gap-2 mt-1">
-                                        <li><i class="fa-solid fa-star text-[#EE9818] text-[14px]"></i></li>
-                                        <li><i class="fa-solid fa-star text-[#EE9818] text-[14px]"></i></li>
-                                        <li><i class="fa-solid fa-star text-[#EE9818] text-[14px]"></i></li>
-                                        <li><i class="fa-solid fa-star text-[#EE9818] text-[14px]"></i></li>
-                                        <li><i class="fa-solid fa-star text-slate-300 text-[14px]"></i></li>
-                                        <li class="dark:text-gray-100">( 1,230 )</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-  
         <FooterOne/>
-
         <ScrollToTop/>
 
     </div>
@@ -297,17 +196,9 @@
     import chair from '@/assets/img/svg/chair.svg'
     import sofa from '@/assets/img/svg/sofa.svg'
     import like from "@/assets/img/svg/like.svg"
-    import bed from "@/assets/img/svg/bed.svg"
-    //import hand from '@/assets/img/svg/hand.svg'
-    import product1 from '@/assets/img/home-v1/ftur-pdct-01.jpg'
-    import product2 from '@/assets/img/home-v1/ftur-pdct-02.jpg'
-    //import comment from '@/assets/img/svg/comment.svg'
-
 
     import NavbarOne from '@/components/navbar/navbar-one.vue';
     import LayoutOne from '@/components/product/layout-one.vue';
-    //import BlogOne from '@/components/blog/blog-one.vue';
-    //import PartnerOne from '@/components/partner/partner-one.vue';
     import FooterOne from '@/components/footer/footer-one.vue';
     import ScrollToTop from '@/components/scroll-to-top.vue';
 
@@ -316,7 +207,11 @@
     import { Autoplay, Pagination,Navigation } from 'swiper/modules';
     import 'swiper/swiper-bundle.css';
 
-    import { productList,featureOne } from '@/data/data';
+    import { featureOne } from '@/data/data';
+    import { useCartStore } from '@/stores/useCartStore'
+
+    // Store del carrito
+    const cart = useCartStore()
    
     import Aos from 'aos';
     import 'aos/dist/aos.css';
@@ -324,7 +219,6 @@
     const banners = ref([]);
     const categories = ref([]);
     const products = ref([]);
-    const carrito = ref([])
 
     onMounted(() => {
         Aos.init()
@@ -373,15 +267,7 @@
     }
 
     function agregarAlCarrito(producto) {
-        // Verificar si el producto ya está en el carrito
-        if (!carrito.value.some(item => item.idProduct === producto.idProduct)) {
-            carrito.value.push(producto)
-        }
-        }
-
-        function quitarDelCarrito(productoId) {
-  carrito.value = carrito.value.filter(item => item.idProduct !== productoId)
-}
-
+        cart.agregar(producto)
+    }
 
 </script>

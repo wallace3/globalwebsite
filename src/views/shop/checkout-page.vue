@@ -4,11 +4,11 @@
 
         <div class="flex items-center gap-4 flex-wrap bg-overlay p-14 sm:p-16 before:bg-title before:bg-opacity-70" :style="{backgroundImage:'url(' + bg + ')'}">
             <div class="text-center w-full">
-                <h2 class="text-white text-8 md:text-[40px] font-normal leading-none text-center">Checkout</h2>
+                <h2 class="text-white text-8 md:text-[40px] font-normal leading-none text-center">Finalizar Compra</h2>
                 <ul class="flex items-center justify-center gap-[10px] text-base md:text-lg leading-none font-normal text-white mt-3 md:mt-4 flex-wrap">
-                    <li><router-link to="/">Home</router-link></li>
+                    <li><router-link to="/">Inicio</router-link></li>
                     <li>/</li>
-                    <li class="text-primary">Checkout</li>
+                    <li class="text-primary">Finalizar Compra</li>
                 </ul>
             </div>
         </div>
@@ -31,28 +31,28 @@
 
                         
                         <h4 class="font-semibold leading-none text-xl md:text-2xl mb-6 md:mb-[30px]">
-                            Billing Information
+                            Datos de Envío
                         </h4>
                         <div class="grid gap-5 md:gap-6">
                             <div>
-                                <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2 sm:mb-3 block">Full Name</label>
+                                <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2 sm:mb-3 block">Nombre Completo</label>
                                 <input class="w-full h-12 md:h-14 bg-white dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" type="text" placeholder="Enter your full name">
                             </div>
                             
                             <div>
-                                <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2 sm:mb-3 block">Email</label>
+                                <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2 sm:mb-3 block">Correo Electrónico</label>
                                 <input class="w-full h-12 md:h-14 bg-white dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" type="text" placeholder="Enter your email address">
                             </div>
 
                             <div>
-                                <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2 sm:mb-3 block">Phone No.</label>
+                                <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2 sm:mb-3 block">Teléfono</label>
                                 <input class="w-full h-12 md:h-14 bg-white dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" type="number" placeholder="Type your phone number">
                             </div>
                         </div>
 
                         <div class="grid md:grid-cols-2 gap-5 md:gap-6">
                             <div class="mt-5">
-                                <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2 sm:mb-3 block">Town / City</label>
+                                <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2 sm:mb-3 block">Estado</label>
                                 <select class="nice-select select-active p-4 !bg-white dark:!bg-dark-secondary">
                                     <option value={1}>Sylht</option>
                                     <option value={2}>Dhaka</option>
@@ -63,7 +63,7 @@
                             </div>
 
                             <div class="mt-5">
-                                <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2 sm:mb-3 block">Zip Code</label>
+                                <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2 sm:mb-3 block">Código Postal</label>
                                 <input class="w-full h-12 md:h-14 bg-white dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" type="text" placeholder="1217">
                             </div>
 
@@ -81,7 +81,7 @@
                         </div>
                         <div class="mt-5">
                             <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2 sm:mb-3 block">
-                                Additional Text
+                                Información adicional
                             </label>
                             <textarea class="w-full h-[120px] bg-white dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" name="Message" placeholder="Type your message"></textarea>
                         </div>
@@ -90,68 +90,30 @@
                     <div data-aos="fade-up" data-aos-delay={200}>
                         <div class="bg-[#FAFAFA] dark:bg-dark-secondary pt-[30px] md:pt-[40px] lg:pt-[50px] px-[30px] md:px-[40px] lg:px-[50px] pb-[30px] border border-[#17243026] border-opacity-15 rounded-xl">   
                             <h4 class="font-semibold leading-none text-xl md:text-2xl mb-6 md:mb-10">
-                                Product Information
+                               Información de Producto
                             </h4>
                             <div class="grid gap-5 mg:gap-6">
-                                <div class="flex items-center justify-between gap-5">
+                                <div v-for="item in cart.carrito" v-bind:key="item.idCart" class="flex items-center justify-between gap-5" >
                                     <div class="flex items-center gap-3 md:gap-4 lg:gap-6 cart-product flex-wrap">
                                         <div class="w-16 sm:w-[70px] flex-none">
-                                            <img :src="cart1" alt="product">
+                                            <img :src="'http://localhost:8080/' + item.image_url" alt="product">
                                         </div>
                                         <div class="flex-1">
-                                            <h6 class="leading-none font-medium">Chair</h6>
+                                            <h6 class="leading-none font-medium">{{ item.name }}</h6>
                                             <h5 class="font-semibold leading-none mt-2">
-                                                <router-link to="#">Modern Sofa Set</router-link>
+                                                <router-link to="#">{{ item.description }}</router-link>
                                             </h5>
                                         </div>
                                     </div>
                                 
-                                    <h6 class="leading-none">$74</h6>
-                                </div>
-                                <div class="flex items-center justify-between gap-5">
-                                    <div class="flex items-center gap-3 md:gap-4 lg:gap-6 cart-product flex-wrap">
-                                        <div class="w-16 sm:w-[70px] flex-none">
-                                            <img :src="cart2" alt="product">
-                                        </div>
-                                        <div class="flex-1">
-                                            <h6 class="leading-none font-medium">Interior</h6>
-                                            <h5 class="font-semibold leading-none mt-2">
-                                                <router-link to="#">Chair with Vase</router-link>
-                                            </h5>
-                                        </div>
-                                    </div>
-                                    
-                                    <h6 class="leading-none">$124</h6>
-                                </div>
-                                <div class="flex items-center justify-between gap-5">
-                                    <div class="flex items-center gap-3 md:gap-4 lg:gap-6 cart-product flex-wrap">
-                                        <div class="w-16 sm:w-[70px] flex-none">
-                                            <img :src="cart3" alt="product">
-                                        </div>
-                                        <div class="flex-1">
-                                            <h6 class="leading-none font-medium">Light / Lamp</h6>
-                                            <h5 class="font-semibold leading-none mt-2">
-                                                <router-link to="#">Hanging Lamp</router-link>
-                                            </h5>
-                                        </div>
-                                    </div>
-                                    <h6 class="leading-none">$241</h6>
+                                    <h6 class="leading-none">$ {{ item.price }}</h6>
                                 </div>
                             </div>
                             <div class="mt-6 pt-6 border-t border-bdr-clr dark:border-bdr-clr-drk text-right flex justify-end flex-col w-full ml-auto mr-0">
                                 <div class="flex justify-between flex-wrap text-base sm:text-lg text-title dark:text-white font-medium">
                                     <span>Sub Total:</span>
-                                    <span>$870</span>
+                                    <span>{{ cart.total }}</span>
                                 </div>
-                                <div class="flex justify-between flex-wrap text-base sm:text-lg text-title dark:text-white font-medium mt-3">
-                                    <span>Coupon Discount:</span>
-                                    <span>-$20</span>
-                                </div>
-                                <div class="flex justify-between flex-wrap text-base sm:text-lg text-title dark:text-white font-medium mt-3">
-                                    <span>VAT:</span>
-                                    <span> $5</span>
-                                </div>
-                                
                             </div>
                             <div class="mt-6 pt-6 border-t border-bdr-clr dark:border-bdr-clr-drk">
                                 <div class="flex justify-between flex-wrap text-base sm:text-lg text-title dark:text-white font-medium mt-3">
@@ -200,7 +162,7 @@
                             <div class="mt-6 pt-6 border-t border-bdr-clr dark:border-bdr-clr-drk">
                                 <div class="flex justify-between flex-wrap font-semibold leading-none text-2xl md:text-3xl">
                                     <span>Total:</span>
-                                    <span>&nbsp;$850</span>
+                                    <span>&nbsp;$ {{ cart.total }}</span>
                                 </div>
                             </div>
                         </div> 
@@ -266,9 +228,9 @@
     import ScrollToTop from '@/components/scroll-to-top.vue';
 
     import bg from '@/assets/img/shortcode/breadcumb.jpg'
-    import cart1 from '@/assets/img/gallery/cart/cart-01.jpg'
-    import cart2 from '@/assets/img/gallery/cart/cart-02.jpg'
-    import cart3 from '@/assets/img/gallery/cart/cart-03.jpg'
+
+    import { useCartStore } from '@/stores/useCartStore';
+    const cart = useCartStore();
 
     import { onMounted, ref } from 'vue';
     import Aos from 'aos';

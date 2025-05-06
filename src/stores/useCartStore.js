@@ -2,10 +2,12 @@
 import { defineStore } from 'pinia'
 import { ref, computed, watch } from 'vue'
 import Cookies from 'js-cookie'
+import axios from 'axios'
 
 export const useCartStore = defineStore('cart', () => {
   // Intenta cargar desde cookies
   const carrito = ref([])
+  const mostrarCarrito = ref(false) 
 
   const cookieData = Cookies.get('carrito')
   if (cookieData) {
@@ -16,14 +18,35 @@ export const useCartStore = defineStore('cart', () => {
     }
   }
 
-  function agregar(producto) {
+const cargarDelServidor = async () => {
+    const res = await axios.get(`http://localhost:8080/cart/get/1`)
+    carrito.value = res.data
+    console.log(carrito);
+    console.log("carga de lservidor");
+    
+}
+
+cargarDelServidor();
+
+const agregar = async (producto) => {
     if (!carrito.value.some(p => p.idProduct === producto.idProduct)) {
       carrito.value.push(producto)
-    }
+        await axios.post('http://localhost:8080/cart', {
+          idUser: 1,
+          idProduct: producto.idProduct
+    })
   }
+}
 
-  function quitar(id) {
-    carrito.value = carrito.value.filter(p => p.idProduct !== id)
+const quitar = async (id) => {
+  carrito.value = carrito.value.filter(p => p.idCart !== id)
+  await axios.delete(`http://localhost:8080/cart/${id}`)
+}
+
+  function toggleCarrito() {
+    mostrarCarrito.value = !mostrarCarrito.value
+    console.log(mostrarCarrito.value);
+    
   }
 
   const total = computed(() =>
@@ -39,6 +62,9 @@ export const useCartStore = defineStore('cart', () => {
     carrito,
     agregar,
     quitar,
-    total
+    total,
+    mostrarCarrito,
+    toggleCarrito,
+    cargarDelServidor
   }
 })

@@ -4,11 +4,11 @@
 
         <div class="flex items-center gap-4 flex-wrap bg-overlay p-14 sm:p-16 before:bg-title before:bg-opacity-70" :style="{backgroundImage:'url(' + bg + ')'}">
             <div class="text-center w-full">
-                <h2 class="text-white text-8 md:text-[40px] font-normal leading-none text-center">Shop</h2>
+                <h2 class="text-white text-8 md:text-[40px] font-normal leading-none text-center">Productos</h2>
                 <ul class="flex items-center justify-center gap-[10px] text-base md:text-lg leading-none font-normal text-white mt-3 md:mt-4">
-                    <li><router-link to="/">Home</router-link></li>
+                    <li><router-link to="/">Inicio</router-link></li>
                     <li>/</li>
-                    <li class="text-primary">Shop</li>
+                    <li class="text-primary">Productos</li>
                 </ul>
             </div>
         </div>
@@ -61,7 +61,7 @@
                 </div>
 
                 <div data-aos="fade-up" data-aos-delay="200">
-                    <LayoutOne :classList="'max-w-[1720px] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-8 pt-8 md:pt-[50px]'" :productList="productList"/>
+                    <LayoutOne :classList="'max-w-[1720px] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-8 pt-8 md:pt-[50px]'" :productList="products"/>
                 </div>
 
                 <div class="text-center mt-7 md:mt-12">
@@ -86,16 +86,16 @@
 
     import bg from '@/assets/img/shortcode/breadcumb.jpg'
 
-    import { productList } from '@/data/data';
-
     import Aos from 'aos';
 
     onMounted(()=>{
         Aos.init()
+        getProducts();
     })
 
     const isOpen = ref(false)
     const selectedOption = ref('Navana Furniture')
+    const products = ref([]);
 
     const options = [
         "Navana Furniture",
@@ -107,6 +107,19 @@
 
     const toggleDropdown = () =>{
         isOpen.value = !isOpen.value
+    }
+
+    const getProducts = async () => {
+        try{
+            const result = await fetch('http://localhost:8080/products/categories');
+            if(!result.ok){
+                throw new Error(`Error HTTP: ${result.status}`);
+            }
+            const data = await result.json();
+            products.value = Array.isArray(data) ? data : [];
+        }catch (error){
+            console.log(error);
+        }
     }
 
     const handleSelect = (option,event) => {

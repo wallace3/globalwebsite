@@ -99,8 +99,7 @@
                         <li :class="current === '/login' ? 'active' : ''" class="lg:hidden"><router-link to="/login">Inicio Sesión</router-link></li>
                     </ul>
                 </div>
-                <p>Carrito ({{ cart.carrito.length }})</p>
-                <p>Total: ${{ cart.total }}</p>
+               
 
                 <NavMenuOne :toggle="toggle" @toggle-change="toggle = $event"/>
             </div>
@@ -109,7 +108,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref, defineProps, defineEmits} from 'vue';
+import { onMounted, ref} from 'vue';
 
 import logoDark from '@/assets/img/logo.png'
 import logoLight from '@/assets/img/logo.png'
@@ -119,9 +118,7 @@ import NavMenuOne from './nav-menu-one.vue';
 
 import add from '@/assets/img/thumb/add.png'
 import { useRoute } from 'vue-router';
-import { useCartStore } from '@/stores/useCartStore'
 
-const cart = useCartStore()
 
 const toggle = ref(false);
 
@@ -138,15 +135,7 @@ const handleScroll = () => {
     }
 }
 
-const props = defineProps({
-  carrito: Array
-})
 
-const emit = defineEmits(['quitar'])
-
-function quitarDelCarrito(productoId) {
-  emit('quitar', productoId)
-}
 
 onMounted(()=>{
     window.scrollTo(0,0)

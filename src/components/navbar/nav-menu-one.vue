@@ -151,15 +151,15 @@
             
         </div>
 
-        <button class="relative hdr_cart_btn" @click="cartList = !cartList">
-            <span class="absolute w-[22px] h-[22px] bg-secondary top-[0px] -right-[11px] rounded-full flex items-center justify-center text-xs leading-none text-white">{{ carrito.length }}</span>
+        <button class="relative hdr_cart_btn" @click="cart.toggleCarrito">
+            <span class="absolute w-[22px] h-[22px] bg-secondary top-[0px] -right-[11px] rounded-full flex items-center justify-center text-xs leading-none text-white">{{ cart.carrito.length }}</span>
             <span class="mdi mdi-shopping-outline text-title dark:text-white text-[24px] sm:text-[28px]"></span>
         </button>
-        <div v-if="cartList" class="hdr_cart_popup w-80 md:w-96 absolute z-50 top-full right-0 sm:right-10 xl:right-0 bg-white dark:bg-title p-5 md:p-[30px] border border-primary">
+        <div v-if="cart.mostrarCarrito" class="hdr_cart_popup w-80 md:w-96 absolute z-50 top-full right-0 sm:right-10 xl:right-0 bg-white dark:bg-title p-5 md:p-[30px] border border-primary">
             <h4 class="font-medium leading-none mb-4 text-xl md:text-2xl">Carrito de Compras</h4>
             <div>
                 <div class="hdr-cart-item">
-                    <div v-for="item in carrito" :key="item.idProduct" class="flex gap-[15px] relative pb-[15px] mb-[15px] border-b border-bdr-clr dark:border-bdr-clr-drk group">
+                    <div v-for="item in cart.carrito" :key="item.idProduct" class="flex gap-[15px] relative pb-[15px] mb-[15px] border-b border-bdr-clr dark:border-bdr-clr-drk group">
                         <router-link :to="`/product-details/${item.idProduct}`" class="block">
                             <img class="w-[70px] md:w-auto h-full" :src="'http://localhost:8080/' + item.image_url" alt="cart" style="width:80px"/>
                         </router-link>
@@ -173,7 +173,7 @@
                             </h6>
                         </div>
                         <div class="wishList_item_close absolute top-0 right-0 w-6 h-6 flex items-center justify-center bg-title dark:bg-white bg-opacity-10 dark:bg-opacity-10 group hover:bg-primary dark:hover:bg-primary opacity-0 group-hover:opacity-100 text-title dark:text-white duration-300 hover:text-white">
-                            <button @click="quitarItem(item.idProduct)"><svg class="fill-current" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <button @click="quitarProducto(item.idCart)"><svg class="fill-current" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M0.636719 1.56306L1.56306 0.636719L4.98839 4.06204L8.41371 0.636719L9.31851 1.54152L5.89319 4.96685L9.3616 8.43526L8.43526 9.3616L4.96685 5.89319L1.54152 9.31851L0.636719 8.41371L4.06204 4.98839L0.636719 1.56306Z"/>
                             </svg></button>
                         </div>
@@ -220,11 +220,13 @@
 
 
     const wishList = ref(false)
-    const cartList = ref(false);
-
     const props = defineProps({
         toggle: Boolean
     });
+
+    function quitarProducto(id) {
+        cart.quitar(id)
+    }
 
     const emit = defineEmits(['toggle-change']);
 
