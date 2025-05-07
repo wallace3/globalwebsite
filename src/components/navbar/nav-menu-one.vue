@@ -5,146 +5,35 @@
         <button class="hdr_search_btn" aria-label="search">
             <i class="mdi mdi-magnify text-title dark:text-white text-[24px] sm:text-[28px]"></i>
         </button>
-        <button class="relative hdr_wishList_btn" @click="wishList = !wishList">
-            <span class="absolute w-[22px] h-[22px] bg-secondary top-[0px] -right-[11px] rounded-full flex items-center justify-center text-xs leading-none text-white">14</span>
+        <button class="relative hdr_wishList_btn"  @click="wishlist.togglewishlist">
+            <span class="absolute w-[22px] h-[22px] bg-secondary top-[0px] -right-[11px] rounded-full flex items-center justify-center text-xs leading-none text-white">{{ wishlist.wishlist.length }}</span>
             <i class="mdi mdi-cards-heart-outline text-title dark:text-white text-[24px] sm:text-[28px]"></i>
         </button>
-        <div v-if="wishList" class="wishlist_popup w-80 md:w-96 absolute z-50 top-full right-0 sm:right-20 xl:right-11 bg-white dark:bg-title py-5 md:py-[30px] pl-5 md:pl-[30px] pr-[10px] md:pr-[15px] border border-primary">
-            <h4 class="font-medium leading-none dark:text-white mb-4 text-xl md:text-2xl">Wishlist</h4>
+        <div v-if="wishlist.mostrarWishlist" class="wishlist_popup w-80 md:w-96 absolute z-50 top-full right-0 sm:right-20 xl:right-11 bg-white dark:bg-title py-5 md:py-[30px] pl-5 md:pl-[30px] pr-[10px] md:pr-[15px] border border-primary">
+            <h4 class="font-medium leading-none dark:text-white mb-4 text-xl md:text-2xl">Lista de deseos</h4>
             <div>
                 <div class="pr-4 md:pr-5 wishlist-item">
-                    <router-link to="/product-details" class="flex items-center gap-[15px] relative pb-[15px] mb-[15px] border-b border-bdr-clr dark:border-bdr-clr-drk">
-                        <img class="w-[70px] md:w-auto" :src="w1" alt="wishlist"/>
+                    <router-link  v-for="item in wishlist.wishlist" v-bind:key="item.idWishList" :to="`/product-details/${item.idProduct}`" class="flex items-center gap-[15px] relative pb-[15px] mb-[15px] border-b border-bdr-clr dark:border-bdr-clr-drk" >
+                        <img class="w-[70px] md:w-auto" :src="'http://localhost:8080/' + item.image_url" alt="wishlist" style="width:80px"/>
                         <div>
                             <div class="flex items-center gap-2">
-                                <span class="text-[14px] md:text-[15px] leading-none block">Sofa</span>
                                 <span class="w-[6px] h-[6px] rounded-full bg-primary"></span>
-                                <span class="text-[14px] md:text-[15px] leading-none block">$65.90</span>
+                                <span class="text-[14px] md:text-[15px] leading-none block">$ {{ item.price }}</span>
                             </div>
-                            <h6 class="text-base md:text-lg font-semibold leading-none mt-3">Modern Sofa Set</h6>
+                            <h6 class="text-base md:text-lg font-semibold leading-none mt-3">{{ item.name }}</h6>
                         </div>
                         <div class="wishList_item_close absolute top-0 right-0 w-6 h-6 flex items-center justify-center bg-title dark:bg-white bg-opacity-10 dark:bg-opacity-10 group duration-300 hover:bg-primary dark:hover:bg-primary">
-                            <svg class="fill-current text-title dark:text-white duration-300 group-hover:text-white" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0.636719 1.56306L1.56306 0.636719L4.98839 4.06204L8.41371 0.636719L9.31851 1.54152L5.89319 4.96685L9.3616 8.43526L8.43526 9.3616L4.96685 5.89319L1.54152 9.31851L0.636719 8.41371L4.06204 4.98839L0.636719 1.56306Z"/>
-                            </svg>
-                        </div>
-                    </router-link>
-                    <router-link to="/product-details" class="flex items-center gap-[15px] relative pb-[15px] mb-[15px] border-b border-bdr-clr dark:border-bdr-clr-drk">
-                        <img class="w-[70px] md:w-auto" :src="w2" alt="wishlist"/>
-                        <div>
-                            <div class="flex items-center gap-2">
-                                <span class="text-[14px] md:text-[15px] leading-none block">Interior</span>
-                                <span class="w-[6px] h-[6px] rounded-full bg-primary"></span>
-                                <span class="text-[14px] md:text-[15px] leading-none block">$99.90</span>
-                            </div>
-                            <h6 class="text-base md:text-lg font-semibold leading-none mt-3">Classic Chair with Vase</h6>
-                        </div>
-                        <div class="wishList_item_close absolute top-0 right-0 w-6 h-6 flex items-center justify-center bg-title dark:bg-white bg-opacity-10 dark:bg-opacity-10 group duration-300 hover:bg-primary dark:hover:bg-primary">
-                            <svg class="fill-current text-title dark:text-white duration-300 group-hover:text-white" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0.636719 1.56306L1.56306 0.636719L4.98839 4.06204L8.41371 0.636719L9.31851 1.54152L5.89319 4.96685L9.3616 8.43526L8.43526 9.3616L4.96685 5.89319L1.54152 9.31851L0.636719 8.41371L4.06204 4.98839L0.636719 1.56306Z"/>
-                            </svg>
-                        </div>
-                    </router-link>
-                    <router-link to="/product-details" class="flex items-center gap-[15px] relative pb-[15px] mb-[15px] border-b border-bdr-clr dark:border-bdr-clr-drk">
-                        <img class="w-[70px] md:w-auto" :src="w3" alt="wishlist"/>
-                        <div>
-                            <div class="flex items-center gap-2">
-                                <span class="text-[14px] md:text-[15px] leading-none block">Lamp</span>
-                                <span class="w-[6px] h-[6px] rounded-full bg-primary"></span>
-                                <span class="text-[14px] md:text-[15px] leading-none block">$30.90</span>
-                            </div>
-                            <h6 class="text-base md:text-lg font-semibold leading-none mt-3">Luxury Hanging Lamp</h6>
-                        </div>
-                        <div class="wishList_item_close absolute top-0 right-0 w-6 h-6 flex items-center justify-center bg-title dark:bg-white bg-opacity-10 dark:bg-opacity-10 group duration-300 hover:bg-primary dark:hover:bg-primary">
-                            <svg class="fill-current text-title dark:text-white duration-300 group-hover:text-white" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0.636719 1.56306L1.56306 0.636719L4.98839 4.06204L8.41371 0.636719L9.31851 1.54152L5.89319 4.96685L9.3616 8.43526L8.43526 9.3616L4.96685 5.89319L1.54152 9.31851L0.636719 8.41371L4.06204 4.98839L0.636719 1.56306Z"/>
-                            </svg>
-                        </div>
-                    </router-link>
-                    <router-link to="/product-details" class="flex items-center gap-[15px] relative pb-[15px] mb-[15px] border-b border-bdr-clr dark:border-bdr-clr-drk">
-                        <img class="w-[70px] md:w-auto" :src="w4" alt="wishlist"/>
-                        <div>
-                            <div class="flex items-center gap-2">
-                                <span class="text-[14px] md:text-[15px] leading-none block">Vase</span>
-                                <span class="w-[6px] h-[6px] rounded-full bg-primary"></span>
-                                <span class="text-[14px] md:text-[15px] leading-none block">$56.90</span>
-                            </div>
-                            <h6 class="text-base md:text-lg font-semibold leading-none mt-3">Premium Quality Vase</h6>
-                        </div>
-                        <div class="wishList_item_close absolute top-0 right-0 w-6 h-6 flex items-center justify-center bg-title dark:bg-white bg-opacity-10 dark:bg-opacity-10 group duration-300 hover:bg-primary dark:hover:bg-primary">
-                            <svg class="fill-current text-title dark:text-white duration-300 group-hover:text-white" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0.636719 1.56306L1.56306 0.636719L4.98839 4.06204L8.41371 0.636719L9.31851 1.54152L5.89319 4.96685L9.3616 8.43526L8.43526 9.3616L4.96685 5.89319L1.54152 9.31851L0.636719 8.41371L4.06204 4.98839L0.636719 1.56306Z"/>
-                            </svg>
-                        </div>
-                    </router-link>
-                    <router-link to="/product-details" class="flex items-center gap-[15px] relative pb-[15px] mb-[15px] border-b border-bdr-clr dark:border-bdr-clr-drk">
-                        <img class="w-[70px] md:w-auto" :src="w5" alt="wishlist"/>
-                        <div>
-                            <div class="flex items-center gap-2">
-                                <span class="text-[14px] md:text-[15px] leading-none block">Chair</span>
-                                <span class="w-[6px] h-[6px] rounded-full bg-primary"></span>
-                                <span class="text-[14px] md:text-[15px] leading-none block">$50.00</span>
-                            </div>
-                            <h6 class="text-base md:text-lg font-semibold leading-none mt-3">Classic White Chair</h6>
-                        </div>
-                        <div class="wishList_item_close absolute top-0 right-0 w-6 h-6 flex items-center justify-center bg-title dark:bg-white bg-opacity-10 dark:bg-opacity-10 group duration-300 hover:bg-primary dark:hover:bg-primary">
-                            <svg class="fill-current text-title dark:text-white duration-300 group-hover:text-white" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0.636719 1.56306L1.56306 0.636719L4.98839 4.06204L8.41371 0.636719L9.31851 1.54152L5.89319 4.96685L9.3616 8.43526L8.43526 9.3616L4.96685 5.89319L1.54152 9.31851L0.636719 8.41371L4.06204 4.98839L0.636719 1.56306Z"/>
-                            </svg>
-                        </div>
-                    </router-link>
-                    <router-link to="/product-details" class="flex items-center gap-[15px] relative pb-[15px] mb-[15px] border-b border-bdr-clr dark:border-bdr-clr-drk">
-                        <img class="w-[70px] md:w-auto" :src="w1" alt="wishlist"/>
-                        <div>
-                            <div class="flex items-center gap-2">
-                                <span class="text-[14px] md:text-[15px] leading-none block">Sofa</span>
-                                <span class="w-[6px] h-[6px] rounded-full bg-primary"></span>
-                                <span class="text-[14px] md:text-[15px] leading-none block">$30.50</span>
-                            </div>
-                            <h6 class="text-base md:text-lg font-semibold leading-none mt-3">Modern Sofa Set</h6>
-                        </div>
-                        <div class="wishList_item_close absolute top-0 right-0 w-6 h-6 flex items-center justify-center bg-title dark:bg-white bg-opacity-10 dark:bg-opacity-10 group duration-300 hover:bg-primary dark:hover:bg-primary">
-                            <svg class="fill-current text-title dark:text-white duration-300 group-hover:text-white" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0.636719 1.56306L1.56306 0.636719L4.98839 4.06204L8.41371 0.636719L9.31851 1.54152L5.89319 4.96685L9.3616 8.43526L8.43526 9.3616L4.96685 5.89319L1.54152 9.31851L0.636719 8.41371L4.06204 4.98839L0.636719 1.56306Z"/>
-                            </svg>
-                        </div>
-                    </router-link>
-                    <router-link to="/product-details" class="flex items-center gap-[15px] relative pb-[15px] mb-[15px] border-b border-bdr-clr dark:border-bdr-clr-drk">
-                        <img class="w-[70px] md:w-auto" :src="w2" alt="wishlist"/>
-                        <div>
-                            <div class="flex items-center gap-2">
-                                <span class="text-[14px] md:text-[15px] leading-none block">Vase</span>
-                                <span class="w-[6px] h-[6px] rounded-full bg-primary"></span>
-                                <span class="text-[14px] md:text-[15px] leading-none block">$30.00</span>
-                            </div>
-                            <h6 class="text-base md:text-lg font-semibold leading-none mt-3">Classic Chair with Vase</h6>
-                        </div>
-                        <div class="wishList_item_close absolute top-0 right-0 w-6 h-6 flex items-center justify-center bg-title dark:bg-white bg-opacity-10 dark:bg-opacity-10 group duration-300 hover:bg-primary dark:hover:bg-primary">
-                            <svg class="fill-current text-title dark:text-white duration-300 group-hover:text-white" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0.636719 1.56306L1.56306 0.636719L4.98839 4.06204L8.41371 0.636719L9.31851 1.54152L5.89319 4.96685L9.3616 8.43526L8.43526 9.3616L4.96685 5.89319L1.54152 9.31851L0.636719 8.41371L4.06204 4.98839L0.636719 1.56306Z"/>
-                            </svg>
-                        </div>
-                    </router-link>
-                    <router-link to="/product-details" class="flex items-center gap-[15px] relative pb-[15px] mb-[15px] border-b border-bdr-clr dark:border-bdr-clr-drk">
-                        <img class="w-[70px] md:w-auto" :src="w3" alt="wishlist"/>
-                        <div>
-                            <div class="flex items-center gap-2">
-                                <span class="text-[14px] md:text-[15px] leading-none block">Lamp</span>
-                                <span class="w-[6px] h-[6px] rounded-full bg-primary"></span>
-                                <span class="text-[14px] md:text-[15px] leading-none block">$120.00</span>
-                            </div>
-                            <h6 class="text-base md:text-lg font-semibold leading-none mt-3">Luxury Hanging Lamp</h6>
-                        </div>
-                        <div class="wishList_item_close absolute top-0 right-0 w-6 h-6 flex items-center justify-center bg-title dark:bg-white bg-opacity-10 dark:bg-opacity-10 group duration-300 hover:bg-primary dark:hover:bg-primary">
-                            <svg class="fill-current text-title dark:text-white duration-300 group-hover:text-white" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0.636719 1.56306L1.56306 0.636719L4.98839 4.06204L8.41371 0.636719L9.31851 1.54152L5.89319 4.96685L9.3616 8.43526L8.43526 9.3616L4.96685 5.89319L1.54152 9.31851L0.636719 8.41371L4.06204 4.98839L0.636719 1.56306Z"/>
-                            </svg>
+                            <button @click="deleteWishlist(item.idWishList)">
+                                <svg class="fill-current text-title dark:text-white duration-300 group-hover:text-white" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0.636719 1.56306L1.56306 0.636719L4.98839 4.06204L8.41371 0.636719L9.31851 1.54152L5.89319 4.96685L9.3616 8.43526L8.43526 9.3616L4.96685 5.89319L1.54152 9.31851L0.636719 8.41371L4.06204 4.98839L0.636719 1.56306Z"/>
+                                </svg>
+                            </button>
                         </div>
                     </router-link>
                 </div>
                 <div class="mt-6 md:mt-10">
                     <router-link to="/wishlist" class="btn btn-outline btn-sm w-full" data-text="View All Wishlist">
-                        <span>View All Wishlist</span>
+                        <span>Ir a mi lista de deseos</span>
                     </router-link>
                 </div>
             </div>
@@ -206,26 +95,24 @@
 </template>
 
 <script setup>
-    import { ref, defineProps,defineEmits } from 'vue'
-    
-    import w1 from '@/assets/img/gallery/wishList-01.jpg'
-    import w2 from '@/assets/img/gallery/wishList-02.jpg'
-    import w3 from '@/assets/img/gallery/wishList-03.jpg'
-    import w4 from '@/assets/img/gallery/wishList-04.jpg'
-    import w5 from '@/assets/img/gallery/wishList-05.jpg'
+    import { defineProps,defineEmits } from 'vue'
     import SwitcherS from '../switcher-s.vue'
     import { useCartStore } from '@/stores/useCartStore'
+    import { useWishlistStore } from '@/stores/useWishlistStore'
 
     const cart = useCartStore()
+    const wishlist = useWishlistStore();
 
-
-    const wishList = ref(false)
     const props = defineProps({
         toggle: Boolean
     });
 
     function quitarProducto(id) {
         cart.quitar(id)
+    }
+
+    function deleteWishlist(id){
+        wishlist.quitar(id);
     }
 
     const emit = defineEmits(['toggle-change']);

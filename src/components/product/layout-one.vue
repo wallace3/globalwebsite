@@ -18,8 +18,8 @@
                
                 <div class="absolute z-10 top-[50%] right-3 transform -translate-y-[40%] opacity-0 duration-300 transition-all group-hover:-translate-y-1/2 group-hover:opacity-100 flex flex-col items-end gap-3">
                     <router-link to="#" class="bg-white dark:bg-title dark:text-white bg-opacity-80 flex items-center justify-center gap-2 px-4 py-[10px] text-base leading-none text-title rounded-[40px] h-14 overflow-hidden new-product-icon">
-                        <i class="mdi mdi-cards-heart-outline dark:text-white text-[24px]"></i>                                                                     
-                        <span class="mt-1">Add to wishlist</span>
+                        <i class="mdi mdi-cards-heart-outline dark:text-white text-[24px]"></i>                                                                  
+                       <button @click="addToWishlist(item)"><span class="mt-1">Agregar a Deseados</span></button>
                     </router-link>
                     <router-link to="#" class="bg-white dark:bg-title dark:text-white bg-opacity-80 flex items-center justify-center gap-2 px-4 py-[10px] text-base leading-none text-title rounded-[40px] h-14 overflow-hidden new-product-icon">
                         <i class="mdi mdi-shopping-outline dark:text-white text-[24px]"></i>     
@@ -57,8 +57,11 @@
 
     import { defineProps } from 'vue';
     import { useCartStore } from '@/stores/useCartStore'
+    import { useWishlistStore } from '@/stores/useWishlistStore';
 
     const cart = useCartStore()
+    const wishlist = useWishlistStore();
+
     defineProps({
         productList:Array,
         classList:String
@@ -67,6 +70,10 @@
 
     function addToCart(producto) {
         cart.agregar(producto)
+    }
+
+    function addToWishlist(producto){
+        wishlist.agregar(producto);
     }
 
 </script>

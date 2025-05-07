@@ -220,8 +220,8 @@ export const featureOne = [
     {
         id:1,
         image:fea1,
-        title:'Free Shipping',
-        desc:'Enjoy free shipping on all orders, making your shopping experience even more convenient. Get your favorite products delivered.'
+        title:'Envío',
+        desc:'Te acompaños en el trayecto de tu pedido, para la seguridad de que tu pieza llegará a la puerta de tu casa.'
     },
     {
         id:2,
@@ -232,14 +232,14 @@ export const featureOne = [
     {
         id:3,
         image:fea3,
-        title:'Secure Payment',
-        desc:`Shop with confidence using our secure payment options, ensuring your personal information stays protected. We prioritize your safety.`
+        title:'Pago Seguro',
+        desc:`Contamos con certificado de seguridad para que tus pagos sean seguros y tus datos estén protegidos.`
     },
     {
         id:4,
         image:fea4,
-        title:`Customer Support`,
-        desc:`Our dedicated customer support team is here to assist you every step of the way. Reach out to us anytime for prompt, friendly help.`
+        title:`Soporte`,
+        desc:`Brindamos soporte 24/7, para garantizar que el funcionamiento del sitio sea el adecuado.`
     },
     {
         id:5,
