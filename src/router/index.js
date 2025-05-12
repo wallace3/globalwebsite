@@ -48,6 +48,8 @@ import BlogDetailsV3 from '@/views/blog/blog-details-v3.vue'
 import BlogTag from '@/views/blog/blog-tag.vue'
 import ContactPage from '@/views/inner-pages/contact-page.vue'
 import ProductCategory from '@/views/shop/product-category.vue'
+import AuctionsPage from '@/views/auctions/auctions-page.vue'
+
 
 const routes = [
   {path: '/',component: IndexOne},
@@ -105,6 +107,7 @@ const routes = [
   {path: '/blog-tag',component:BlogTag},
   {path: '/contact',component:ContactPage},
   {path: '/product-category',component:ProductCategory},
+  {path: '/subastas',component:AuctionsPage}
 ]
 
 const router = createRouter({
