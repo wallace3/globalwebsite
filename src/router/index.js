@@ -49,6 +49,7 @@ import BlogTag from '@/views/blog/blog-tag.vue'
 import ContactPage from '@/views/inner-pages/contact-page.vue'
 import ProductCategory from '@/views/shop/product-category.vue'
 import AuctionsPage from '@/views/auctions/auctions-page.vue'
+import AuctionProductsPage from '@/views/auctions/products-page.vue'
 
 
 const routes = [
@@ -107,7 +108,9 @@ const routes = [
   {path: '/blog-tag',component:BlogTag},
   {path: '/contact',component:ContactPage},
   {path: '/product-category',component:ProductCategory},
-  {path: '/subastas',component:AuctionsPage}
+  {path: '/subastas',component:AuctionsPage},
+  {path: '/subasta/productos/:id',component:AuctionProductsPage}
+
 ]
 
 const router = createRouter({
