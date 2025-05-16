@@ -89,7 +89,7 @@ const routes = [
   {path: '/payment-confirmation',component:PaymentConfirmation},
   {path: '/payment-success',component:PaymentSuccess},
   {path: '/payment-failure',component:PaymentFailure},
-  {path: '/shop-v1',component:ShopV1},
+  {path: '/productos',component:ShopV1},
   {path: '/shop-v2',component:ShopV2},
   {path: '/shop-v3',component:ShopV3},
   {path: '/shop-v4',component:ShopV4},

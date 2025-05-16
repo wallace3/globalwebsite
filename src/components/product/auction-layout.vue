@@ -36,7 +36,7 @@
 </template>
 
 <script setup>
-import { defineProps,  defineEmits, ref, watch} from 'vue';
+import { defineProps,  defineEmits, reactive, watch} from 'vue';
 
     const props = defineProps({
         productList:Object,
@@ -45,7 +45,7 @@ import { defineProps,  defineEmits, ref, watch} from 'vue';
 
     const emit = defineEmits(['update:offer', 'offerBid']);
 
-    const localOffers = ref({});
+    const localOffers = reactive({});
 
     watch(() => props.productList, (newList) => {
   if (!newList) return;

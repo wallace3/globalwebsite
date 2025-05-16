@@ -2,26 +2,10 @@
    <div class="relative bg-overlay before:bg-title before:bg-opacity-95" :style="{backgroundImage:'url('+ bg +')'}">
         <div class="s-pt-100">
             <div class="container-fluid">
-                <div class="max-w-[1722px] mx-auto flex items-start justify-between gap-10 s-pb-100 flex-wrap lg:flex-nowrap footer-wrapper">
-
-                    <div class="lg:max-w-[366px] sm:w-[45%] lg:w-full flex items-start justify-between gap-10 footer-inner-wrapper">
-                        <div>
-                            <h4 class="text-white leading-none mb-5 md:mb-6 text-xl md:text-2xl">Sitemap</h4>
-                            <ul class="text-white leading-none flex flex-col gap-4">
-                                <li v-for="(item, index) in footerLink1" :key="index" class="duration-100 hover:text-primary inline-block group"><router-link class="text-underline-primary" :to="item.link">{{item.name}}</router-link></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 class="text-white leading-none mb-5 md:mb-6 text-xl md:text-2xl">Others</h4>
-                            <ul class="text-white leading-none flex flex-col gap-4">
-                                <li v-for="(item, index) in footerLink2" :key="index" class="duration-100 hover:text-primary inline-block group"><router-link class="text-underline-primary" :to="item.link">{{item.name}}</router-link></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="lg:max-w-[522px] w-full sm:text-center -order-1 lg:order-none">
-                        <img class="sm:mx-auto w-[150px] sm:w-auto" :src="logo" alt="logo">
-                        <p class="mt-4 text-white-light max-w-[522px] sm:mx-auto">Furnixar is a modern furniture template for an eCommerce website designed to help you create an impressive online store for your furniture or home decor business. </p>
+                <div class="wrapper-logo">
+                    <div class="main-logo">
+                        <img class="sm:mx-auto w-[150px] sm:w-auto" :src="logoG" alt="logo">
+                        <p class="mt-4 text-white-light max-w-[522px] sm:mx-auto">Global trade & auctions, es un servicio donde puedes encontrar exclenetes piezas y ofertar las tuyas. </p>
                         <div class="flex items-center sm:justify-center gap-4 mt-6">
                             <router-link to="#" class="w-10 h-10 rounded-full border border-white border-opacity-50 flex items-center justify-center group hover:border-primary duration-300" aria-label="Facebook">
                                 <svg class="fill-current text-white group-hover:text-primary duration-300 " width="9" height="17" viewBox="0 0 9 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -50,24 +34,11 @@
                         </div>
                     </div>
 
-                    <div class="lg:max-w-[460px] sm:w-[45%] lg:w-full flex items-start justify-between gap-10 footer-inner-wrapper">
-                        <div>
-                            <h4 class="text-white leading-none mb-5 md:mb-6 text-xl md:text-2xl">Shop</h4>
-                            <ul class="text-white leading-none flex flex-col gap-4">
-                                <li v-for="(item, index) in footerLink3" :key="index" class="duration-100 hover:text-primary inline-block group"><router-link class="text-underline-primary" :to="item.link">{{item.name}}</router-link></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 class="text-white leading-none mb-5 md:mb-6 text-xl md:text-2xl">Customer Service</h4>
-                            <ul class="text-white leading-none flex flex-col gap-4">
-                                <li v-for="(item, index) in footerLink4" :key="index" class="duration-100 hover:text-primary inline-block group"><router-link class="text-underline-primary" :to="item.link">{{item.name}}</router-link></li>
-                            </ul>
-                        </div>
-                    </div>
+                  
                 </div>
 
                 <div class="max-w-[1722px] mx-auto border-t border-white border-opacity-10 py-5 md:py-7 text-center">
-                    <p class="text-white">© {{year}} Furnixar Develop with <i class="fa-solid fa-heart text-red-600"></i> by <a href="https://shreethemes.in/" target="_blank" className='ms-1'>Shreethemes</a></p>
+                    <p class="text-white">© {{year}} Global Trade & auctions Develop with <i class="fa-solid fa-heart text-red-600"></i></p>
                 </div>
             </div>
         </div>
@@ -75,10 +46,20 @@
 </template>
 
 <script setup>
-    import logo from '@/assets/img/footer-logo.svg'
+    //import logo from '@/assets/img/footer-logo.svg'
     import bg from '@/assets/img/bg/footer.jpg'
-    import { footerLink1, footerLink2, footerLink3, footerLink4 } from '@/data/nav-data';
+    import logoG from '@/assets/img/logo1.png'
     import { ref } from 'vue';
 
     const year = ref(new Date().getFullYear());
 </script>
+
+<style>
+    .wrapper-logo{
+        text-align:center;
+    }
+
+    .main-logo{
+        margin-bottom:50px;
+    }
+</style>
