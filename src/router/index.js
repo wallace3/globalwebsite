@@ -109,7 +109,8 @@ const routes = [
   {path: '/contact',component:ContactPage},
   {path: '/product-category',component:ProductCategory},
   {path: '/subastas',component:AuctionsPage},
-  {path: '/subasta/productos/:id',component:AuctionProductsPage}
+  {path: '/subasta/productos/:id',component:AuctionProductsPage},
+  {path: '/index-two',component:IndexThree}
 
 ]
 

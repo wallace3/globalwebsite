@@ -1,6 +1,10 @@
 <!-- eslint-disable vue/no-mutating-props -->
 <template>
+    
     <div class="flex items-center gap-4 sm:gap-6">
+        <button class="relative hdr_wishList_btn">
+            <i class="mdi mdi-cards-heart-outline text-title dark:text-white text-[24px] sm:text-[28px]"></i>
+        </button>
         <router-link to="/login" class="text-lg leading-none text-title dark:text-white transition-all duration-300 hover:text-primary hidden lg:block">Ingresar</router-link>
         <button class="hdr_search_btn" aria-label="search">
             <i class="mdi mdi-magnify text-title dark:text-white text-[24px] sm:text-[28px]"></i>
@@ -68,6 +72,7 @@
                         </div>
                     </div>
                 </div>
+               
                 <div class="pt-5 md:pt-[30px] mt-5 md:mt-[30px] border-t border-bdr-clr dark:border-bdr-clr-drk">
                     <h4 class="mb-5 md:mb-[30px] font-medium !leading-none text-lg md:text-xl text-right">Subtotal : {{ cart.total }}</h4>
                     <div class="grid grid-cols-2 gap-4">

@@ -8,35 +8,28 @@
             </div>
             <div class="w-full md:w-1/2 lg:max-w-lg xl:max-w-3xl lg:w-full py-16 px-[20px] sm:px-8 lg:p-16 xl:p-24 relative z-10 flex items-center overflow-hidden">
                 <div class="mx-auto md:mx-0 max-w-md">
-                    <h2 class="leading-none" data-aos="fade-up">Create New Account</h2>
-                    <p class="text-lg mt-[15px]" data-aos="fade-up" data-aos-delay="100">Buy & sale your exclusive product only on Furnixar</p>
+                    <h2 class="leading-none" data-aos="fade-up">Crear nueva cuenta</h2>
+                    <p class="text-lg mt-[15px]" data-aos="fade-up" data-aos-delay="100">Registrate y obten la posibilidad de adquirir piezas únicas</p>
                     <div class="mt-7" data-aos="fade-up" data-aos-delay="200">
-                        <label class="text-base sm:text-lg font-medium leading-none mb-2.5 block dark:text-white">Full Name</label>
-                        <input class="w-full h-12 md:h-14 bg-white dark:bg-transparent border border-bdr-clr focus:border-primary p-4 outline-none duration-300" type="email" placeholder="Enter your email address">
+                        <label class="text-base sm:text-lg font-medium leading-none mb-2.5 block dark:text-white">Nombre(s)</label>
+                        <input v-model="name" class="w-full h-12 md:h-14 bg-white dark:bg-transparent border border-bdr-clr focus:border-primary p-4 outline-none duration-300" type="email" placeholder="Ingresa tu nombre(s)">
+                    </div>
+                    <div class="mt-7" data-aos="fade-up" data-aos-delay="200">
+                        <label class="text-base sm:text-lg font-medium leading-none mb-2.5 block dark:text-white">Apellido(s)</label>
+                        <input v-model="lastName" class="w-full h-12 md:h-14 bg-white dark:bg-transparent border border-bdr-clr focus:border-primary p-4 outline-none duration-300" type="email" placeholder="Ingresa tu apellido (s)">
                     </div>
                     <div class="mt-5" data-aos="fade-up" data-aos-delay="300">
-                        <label class="text-base sm:text-lg font-medium leading-none mb-2.5 block dark:text-white">Email</label>
-                        <input class="w-full h-12 md:h-14 bg-white dark:bg-transparent border border-bdr-clr focus:border-primary p-4 outline-none duration-300" type="email" placeholder="Enter your email address">
+                        <label class="text-base sm:text-lg font-medium leading-none mb-2.5 block dark:text-white">Correo electrónico</label>
+                        <input v-model="email" class="w-full h-12 md:h-14 bg-white dark:bg-transparent border border-bdr-clr focus:border-primary p-4 outline-none duration-300" type="email" placeholder="Ingresa Correo eletrónico">
                     </div>
                     <div class="mt-5" data-aos="fade-up" data-aos-delay="400">
-                        <label class="text-base sm:text-lg font-medium leading-none mb-2.5 block dark:text-white">Password</label>
-                        <input class="w-full h-12 md:h-14 bg-white dark:bg-transparent border border-bdr-clr focus:border-primary p-4 outline-none duration-300 placeholder:text-xl placeholder:transform placeholder:translate-y-[10px]" type="password" placeholder="* * * * * * * *">
-                    </div>
-                    <div class="mt-7" data-aos="fade-up" data-aos-delay="500">
-                        <label class="flex items-center gap-2 iam-agree">
-                            <input class="appearance-none hidden" type="checkbox" name="categories">
-                            <span class="w-[18px] h-[18px] rounded-[5px] border-2 border-title dark:border-white flex items-center justify-center duration-300">
-                                <svg class="duration-300 opacity-0 fill-current text-title dark:text-white" width="9" height="8" viewBox="0 0 9 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M3.05203 7.04122C2.87283 7.04122 2.69433 6.97322 2.5562 6.83864L0.532492 4.8553C0.253409 4.58189 0.249159 4.13351 0.522576 3.85372C0.796701 3.57393 1.24578 3.57039 1.52416 3.84309L3.05203 5.34122L7.61512 0.868804C7.89491 0.595387 8.34328 0.59822 8.6167 0.87872C8.89082 1.1578 8.88657 1.60689 8.60749 1.8803L3.54787 6.83864C3.40974 6.97322 3.23124 7.04122 3.05203 7.04122Z"/>
-                                </svg>
-                            </span>
-                            <span class="text-base sm:text-lg text-title dark:text-white leading-none sm:leading-none select-none inline-block transform translate-y-[3px]">Remember Me</span> 
-                        </label>
+                        <label class="text-base sm:text-lg font-medium leading-none mb-2.5 block dark:text-white">Contraseña</label>
+                        <input v-model="password" class="w-full h-12 md:h-14 bg-white dark:bg-transparent border border-bdr-clr focus:border-primary p-4 outline-none duration-300 placeholder:text-xl placeholder:transform placeholder:translate-y-[10px]" type="password" placeholder="* * * * * * * *">
                     </div>
                     <div data-aos="fade-up" data-aos-delay="600">
-                        <router-link to="#" class="btn btn-theme-solid mt-[15px]" data-text="Register"><span>Register</span></router-link>
+                        <button type="button" class="btn btn-theme-solid mt-[15px]" data-text="Registrar" @click="createClient()"><span>Regisrate</span></button>
                     </div>
-                    <p class="text-lg mt-[15px]" data-aos="fade-up" data-aos-delay="700">Already have an account ?<router-link to="/login" class="text-primary font-medium ml-1 inline-block">Login</router-link></p>
+                    <p class="text-lg mt-[15px]" data-aos="fade-up" data-aos-delay="700">¿ Ya tienes cuenta ?<router-link to="/login" class="text-primary font-medium ml-1 inline-block">Inicia sesión</router-link></p>
                 </div>
             </div>
         </div>
@@ -49,14 +42,60 @@
 </template>
 
 <script setup>
-    import { onMounted } from 'vue';
+    import { onMounted, ref } from 'vue';
     
     import NavbarOne from '@/components/navbar/navbar-one.vue';
     import FooterOne from '@/components/footer/footer-one.vue';
     import ScrollToTop from '@/components/scroll-to-top.vue';
+    import { useRouter } from 'vue-router'
+
+    import { toast } from 'vue3-toastify';
+    import 'vue3-toastify/dist/index.css';
 
     import register from '@/assets/img/bg/register.jpg'
     import Aos from 'aos';
+
+    const router = useRouter()
+    const name = ref('');
+    const password = ref('');
+    const lastName = ref('');
+    const email = ref('');
+
+    const createClient = async()=>{
+        try{
+            const response = await fetch('http://localhost:8080/users',{
+                method:'POST',
+                headers:{
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name:name.value,  lastName: lastName.value, email:email.value, password:password.value, idType:8, status:1})
+            })
+            const data = await response.json();
+            if(!response.ok){
+                showToast(data.error, {
+                    type: 'error',
+                    position: 'top-right',
+                    autoClose: 5000
+                })
+            }   
+                
+            showToast(data.message, {
+                type: 'success',
+                position: 'top-right',
+                autoClose: 2000
+            })
+
+             setTimeout(() => {
+                router.push('/login')
+            }, 2000)
+        }catch(error){
+            console.error('Error', error);
+        }
+    }
+
+    const showToast = (message, options = {}) => {
+        toast(message, options)
+    } 
 
     onMounted(()=>{
         Aos.init()

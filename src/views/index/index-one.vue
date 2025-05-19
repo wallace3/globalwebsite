@@ -201,6 +201,7 @@
     import LayoutOne from '@/components/product/layout-one.vue';
     import FooterOne from '@/components/footer/footer-one.vue';
     import ScrollToTop from '@/components/scroll-to-top.vue';
+    
 
 
     import { Swiper, SwiperSlide } from 'swiper/vue';

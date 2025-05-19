@@ -54,8 +54,6 @@
     const route = useRoute();
     const auctionProducts = ref([]);
 
-
-
     const getAuctionProducts = async () => {
         try{
             const response = await fetch(`http://localhost:8080/auction/details/products/${route.params.id}`)
