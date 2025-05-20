@@ -61,7 +61,7 @@
                 </div>
 
                 <div data-aos="fade-up" data-aos-delay="200">
-                    <LayoutOne :classList="'max-w-[1720px] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-8 pt-8 md:pt-[50px]'" :productList="products"/>
+                    <ProductsLayout :classList="'max-w-[1720px] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-8 pt-8 md:pt-[50px]'" :productList="products"/>
                 </div>
 
                 <div class="text-center mt-7 md:mt-12">
@@ -80,10 +80,10 @@
 <script setup>
     import { onMounted, ref } from 'vue';
     import NavbarOne from '@/components/navbar/navbar-one.vue';
-    import LayoutOne from '@/components/product/layout-one.vue';
+    //import LayoutOne from '@/components/product/layout-one.vue';
     import FooterOne from '@/components/footer/footer-one.vue';
     import ScrollToTop from '@/components/scroll-to-top.vue';
-
+    import ProductsLayout from '@/components/product/products-layout.vue';
     import bg from '@/assets/img/shortcode/breadcumb.jpg'
 
     import Aos from 'aos';

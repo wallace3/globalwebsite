@@ -1,38 +1,32 @@
 // stores/useCartStore.js
 import { defineStore } from 'pinia'
-import { ref, computed, watch } from 'vue'
-import Cookies from 'js-cookie'
+import { ref, computed} from 'vue'
+import { useUserStore } from '@/stores/userStore'
 import axios from 'axios'
+
 
 export const useCartStore = defineStore('cart', () => {
   // Intenta cargar desde cookies
   const carrito = ref([])
   const mostrarCarrito = ref(false) 
 
-  const cookieData = Cookies.get('carrito')
-  if (cookieData) {
-    try {
-      carrito.value = JSON.parse(cookieData)
-    } catch (e) {
-      carrito.value = []
-    }
-  }
-
 const cargarDelServidor = async () => {
-    const res = await axios.get(`http://localhost:8080/cart/get/1`)
-    carrito.value = res.data
-    console.log(carrito);
-    console.log("carga de lservidor");
+    const userStore = useUserStore();
+    if (!userStore.isAuthenticated || !userStore.user.user.idUser) return
+    console.log("si entra");
     
+    const res = await axios.get(`http://localhost:8080/cart/get/${userStore.user.user.idUser}`)
+    carrito.value = res.data
 }
 
 cargarDelServidor();
 
 const agregar = async (producto) => {
-    if (!carrito.value.some(p => p.idProduct === producto.idProduct)) {
+  const userStore = useUserStore();
+  if (!carrito.value.some(p => p.idProduct === producto.idProduct)) {
       carrito.value.push(producto)
         await axios.post('http://localhost:8080/cart', {
-          idUser: 1,
+          idUser: userStore.user.user.idUser,
           idProduct: producto.idProduct
     })
   }
@@ -45,18 +39,11 @@ const quitar = async (id) => {
 
   function toggleCarrito() {
     mostrarCarrito.value = !mostrarCarrito.value
-    console.log(mostrarCarrito.value);
-    
   }
 
   const total = computed(() =>
     carrito.value.reduce((acc, p) => acc + parseFloat(p.price), 0)
   )
-
-  // Guarda automáticamente el carrito en cookies cada vez que cambia
-  watch(carrito, (newValue) => {
-    Cookies.set('carrito', JSON.stringify(newValue), { expires: 7 }) // Dura 7 días
-  }, { deep: true })
 
   return {
     carrito,

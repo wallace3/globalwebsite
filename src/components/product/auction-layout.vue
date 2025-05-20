@@ -16,19 +16,19 @@
                     <h4 class="font-medium leading-none dark:text-white text-lg">Precio Inicial: <b>${{item.price}}</b></h4>
                     <h4 v-if="item.bid" class="font-medium leading-none dark:text-white text-lg">Oferta actual: <b>${{item.bid}}</b></h4>
                     <h4 v-else class="font-medium leading-none dark:text-white text-lg">Oferta actual: <b>No hay oferta</b></h4>
+                    <h4 class="font-medium leading-none dark:text-white text-lg">Secuencia de Oferta: Multiplos de <b>${{ props.amount }}</b></h4>
                     <div>
                          <input
-                    type="text"
-                    v-model="localOffers[item.idProduct]"
-                    @input="updateOffer(item.idProduct)"
-                    class="form-control input-style"
-                    placeholder="Deja tu puja"
-                />
-                 <button @click="triggerBid(item.idProduct)">
-                    <!-- ícono SVG -->
-                    Enviar
-                </button>
+                            type="text"
+                            v-model="localOffers[item.idProduct]"
+                            @input="updateOffer(item.idProduct)"
+                            class="form-control input-style"
+                            placeholder="Deja tu puja"
+                        />
                     </div>
+                     <button @click="triggerBid(item.idProduct,item.bid,item.price)" class="btn btn-outline btn-sm offer-button" data-text="Oferta">
+                        <span>Ofertar</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -36,62 +36,88 @@
 </template>
 
 <script setup>
-import { defineProps,  defineEmits, reactive, watch} from 'vue';
+import { defineProps, defineEmits, ref, onMounted } from 'vue';
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 
-    const props = defineProps({
-        productList:Object,
-        classList:String
-    })
+const props = defineProps({
+    productList:Object,
+    classList:String,
+    amount:Number
+})
 
-    const emit = defineEmits(['update:offer', 'offerBid']);
+const emit = defineEmits(['update:offer', 'offerBid']);
+const localOffers = ref({});
 
-    const localOffers = reactive({});
-
-    watch(() => props.productList, (newList) => {
-  if (!newList) return;
-  newList.forEach(item => {
-    if (!(item.idProduct in localOffers)) {
-      localOffers[item.idProduct] = item.offer || '';
-    }
-  });
-}, { immediate: true });
-
-// Emitimos update cada vez que cambie localOffers por producto
-watch(localOffers, (newOffers) => {
-  Object.entries(newOffers).forEach(([id, offer]) => {
-    emit('update:offer', { id, offer });
-  });
-}, { deep: true });
-
-    console.log(localOffers.value);
-    
-    
+onMounted(()=>{
     props.productList.forEach(item => {
         if (!(item.idProduct in localOffers.value)) {
             localOffers.value[item.idProduct] = item.offer || '';
         }
     });
+     console.log("localoffers", localOffers)
+})
 
+const showToast = (message, options = {}) => {
+    toast(message, options)
+} 
 
-    const updateOffer = (id) => {
-        console.log(id);
-        console.log( localOffers.value[id]);
-        
-        
+const updateOffer = (id) => {
     emit('update:offer', {
         id,
         offer: localOffers.value[id]
     });
 };
 
-const triggerBid = (id) => {
+const triggerBid = (id, bid, price) => {
+    if(bid){
+        if(parseInt(localOffers.value[id])<=parseInt(bid)){
+            showToast('No puede ser menor o igual a la oferta actual', {
+                type: 'error',
+                autoClose: 5000,
+                position: 'bottom-left',
+                pauseOnHover: true
+            })
+            return
+        }
+        if ((parseInt(localOffers.value[id]) - (parseInt(bid))) % props.amount !== 0) {
+             showToast(`La ofertaba debe ser un múltiplo de ${props.amount}`, {
+                type: 'error',
+                autoClose: 5000,
+                position: 'bottom-left',
+                pauseOnHover: true
+            })
+            return;
+        }
+    }else{
+        if(parseInt(localOffers.value[id])<=parseInt(price)){
+            showToast('No puede ser menor o igual al precio inicial', {
+                type: 'error',
+                autoClose: 5000,
+                position: 'bottom-left',
+                pauseOnHover: true
+            })
+            return
+        }
+        if ((parseInt(localOffers.value[id]) - (parseInt(price))) % props.amount !== 0) {
+            showToast(`La ofertaba debe ser un múltiplo de ${props.amount}`, {
+                type: 'error',
+                autoClose: 5000,
+                position: 'bottom-left',
+                pauseOnHover: true
+            })
+            return;
+        }
+    }
     emit('offerBid', id);
 };
-
 </script>
 
 <style>
     .input-style{
         border-width:2px!important;
+    }
+    .offer-button{
+        margin-top:5px;
     }
 </style>

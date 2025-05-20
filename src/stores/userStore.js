@@ -1,4 +1,6 @@
 import { defineStore } from 'pinia'
+import { useCartStore } from './useCartStore'
+import { useWishlistStore } from './useWishlistStore'
 
 export const useUserStore = defineStore('user', {
   state: () => ({
@@ -6,15 +8,24 @@ export const useUserStore = defineStore('user', {
     isAuthenticated: !!localStorage.getItem('user')
   }),
   actions: {
-    login(userData) {
+    async login(userData) {
       this.user = userData
       this.isAuthenticated = true
       localStorage.setItem('user', JSON.stringify(userData))
+
+      // ✅ Cargar carrito del servidor
+      const cartStore = useCartStore()
+      await cartStore.cargarDelServidor()
+
+      const wishlistStore = useWishlistStore()
+      await wishlistStore.cargarDelServidor()
+
     },
     logout() {
       this.user = null
       this.isAuthenticated = false
       localStorage.removeItem('user')
+      window.location.reload()
     }
   }
 })

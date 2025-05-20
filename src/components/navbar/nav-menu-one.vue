@@ -1,11 +1,19 @@
 <!-- eslint-disable vue/no-mutating-props -->
 <template>
-    
     <div class="flex items-center gap-4 sm:gap-6">
-        <button class="relative hdr_wishList_btn">
-            <i class="mdi mdi-cards-heart-outline text-title dark:text-white text-[24px] sm:text-[28px]"></i>
+        <button class="relative hdr_wishList_btn"  @click="usermenu = !usermenu">
+            <i class="mdi mdi-account-outline text-title dark:text-white text-[24px] sm:text-[28px]"></i>
         </button>
-        <router-link to="/login" class="text-lg leading-none text-title dark:text-white transition-all duration-300 hover:text-primary hidden lg:block">Ingresar</router-link>
+        <div v-if="usermenu" class="hdr_profile_menu absolute z-50 top-full right-[50px] sm:right-[80px] min-w-[180px] sm:min-w-[220px] bg-white dark:bg-title py-[10px] sm:py-[20px] px-5 sm:px-[30px] border border-tertiary opacity-0 invisible transition-all transform translate-y-5 mt-[3px] profile-menu-active">
+            <ul v-if="user.isAuthenticated" class="text-lg text-title dark:text-white leading-none">
+                <li class="py-[10px] duration-300 transform hover:translate-x-1 hover:text-tertiary"><a href="login.html">Mi Perfil</a></li>
+                <li class="py-[10px] duration-300 transform hover:translate-x-1 hover:text-tertiary" @click="logout()">Cerrar Sesión</li>
+            </ul>
+            <ul v-else>
+                <li class="py-[10px] duration-300 transform hover:translate-x-1 hover:text-tertiary"><router-link to="/login">Iniciar Sesión</router-link></li>
+                <li class="py-[10px] duration-300 transform hover:translate-x-1 hover:text-tertiary"><router-link to="/register">Registrate</router-link></li>
+            </ul>
+        </div>
         <button class="hdr_search_btn" aria-label="search">
             <i class="mdi mdi-magnify text-title dark:text-white text-[24px] sm:text-[28px]"></i>
         </button>
@@ -41,9 +49,7 @@
                     </router-link>
                 </div>
             </div>
-            
         </div>
-
         <button class="relative hdr_cart_btn" @click="cart.toggleCarrito">
             <span class="absolute w-[22px] h-[22px] bg-secondary top-[0px] -right-[11px] rounded-full flex items-center justify-center text-xs leading-none text-white">{{ cart.carrito.length }}</span>
             <span class="mdi mdi-shopping-outline text-title dark:text-white text-[24px] sm:text-[28px]"></span>
@@ -100,17 +106,25 @@
 </template>
 
 <script setup>
-    import { defineProps,defineEmits } from 'vue'
+    import { defineProps,defineEmits, ref } from 'vue'
     import SwitcherS from '../switcher-s.vue'
     import { useCartStore } from '@/stores/useCartStore'
     import { useWishlistStore } from '@/stores/useWishlistStore'
+    import { useUserStore } from '@/stores/userStore';
 
-    const cart = useCartStore()
+
+    const user = useUserStore()
+    const cart = useCartStore();
     const wishlist = useWishlistStore();
+    const usermenu = ref(false);
 
     const props = defineProps({
         toggle: Boolean
     });
+
+    function logout(){
+        user.logout()
+    }
 
     function quitarProducto(id) {
         cart.quitar(id)

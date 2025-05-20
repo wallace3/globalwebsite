@@ -148,8 +148,8 @@
                     <LayoutOne :productList="products.slice(0,4)" :classList="'max-w-[1720px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-8'"  @agregar="agregarAlCarrito"/>
                 </div>
                 <div class="text-center mt-7 md:mt-12">
-                    <router-link to="/shop-v1" class="btn btn-outline" data-text="All Products">
-                        <span>All Products</span>
+                    <router-link to="/shop-v1" class="btn btn-outline" data-text="Todos los productos">
+                        <span>Todos los productos</span>
                     </router-link>
                 </div>
             </div>

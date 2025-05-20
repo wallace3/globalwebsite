@@ -1,36 +1,28 @@
 // stores/useCartStore.js
 import { defineStore } from 'pinia'
-import { ref, computed, watch } from 'vue'
-import Cookies from 'js-cookie'
+import { ref, computed } from 'vue'
+import { useUserStore } from '@/stores/userStore'
 import axios from 'axios'
 
 export const useWishlistStore = defineStore('wishlist', () => {
-  // Intenta cargar desde cookies
-  const wishlist = ref([])
-  const mostrarWishlist = ref(false) 
-
-  const cookieData = Cookies.get('wishlist')
-  if (cookieData) {
-    try {
-      wishlist.value = JSON.parse(cookieData)
-    } catch (e) {
-      wishlist.value = []
-    }
-  }
+const wishlist = ref([])
+const mostrarWishlist = ref(false) 
 
 const cargarDelServidor = async () => {
-    const res = await axios.get(`http://localhost:8080/wishlist/get/1`)
-    wishlist.value = res.data
-    console.log(wishlist);
+  const userStore = useUserStore();
+  if (!userStore.isAuthenticated || !userStore.user.user.idUser) return
+  const res = await axios.get(`http://localhost:8080/wishlist/get/${userStore.user.user.idUser}`)
+  wishlist.value = res.data
 }
 
 cargarDelServidor();
 
 const agregar = async (producto) => {
+    const userStore = useUserStore();
     if (!wishlist.value.some(p => p.idProduct === producto.idProduct)) {
       wishlist.value.push(producto)
         await axios.post('http://localhost:8080/wishlist', {
-          idUser: 1,
+          idUser: userStore.user.user.idUser,
           idProduct: producto.idProduct
     })
   }
@@ -41,20 +33,13 @@ const quitar = async (id) => {
   await axios.delete(`http://localhost:8080/wishlist/${id}`)
 }
 
-  function togglewishlist() {
-    mostrarWishlist.value = !mostrarWishlist.value
-    console.log(mostrarWishlist.value);
-    
-  }
+function togglewishlist() {
+  mostrarWishlist.value = !mostrarWishlist.value
+}
 
-  const total = computed(() =>
-    wishlist.value.reduce((acc, p) => acc + parseFloat(p.price), 0)
-  )
-
-  // Guarda automáticamente el wishlist en cookies cada vez que cambia
-  watch(wishlist, (newValue) => {
-    Cookies.set('wishlist', JSON.stringify(newValue), { expires: 7 }) // Dura 7 días
-  }, { deep: true })
+const total = computed(() =>
+  wishlist.value.reduce((acc, p) => acc + parseFloat(p.price), 0)
+)
 
   return {
     wishlist,

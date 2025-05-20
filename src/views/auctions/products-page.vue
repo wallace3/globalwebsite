@@ -18,6 +18,7 @@
                 <div data-aos="fade-up" data-aos-delay="200">
                     <ProductsLayout :classList="'max-w-[1720px] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-8 pt-8 md:pt-[50px]'" 
                     :productList="auctionProducts"  
+                    :amount = "amount"
                     @update:offer="updateOffer"
                     @offerBid="offerBid"/>
                 </div>
@@ -43,16 +44,19 @@
     import ScrollToTop from '@/components/scroll-to-top.vue';
     import { useRoute } from 'vue-router';
     import bg from '@/assets/img/shortcode/breadcumb.jpg'
-
+    import { useUserStore } from '@/stores/userStore'
     import Aos from 'aos';
 
     onMounted(()=>{
         Aos.init()
         getAuctionProducts();
+        getAuctionAmount();
     })
 
     const route = useRoute();
     const auctionProducts = ref([]);
+    const amount = ref(null);
+    const user = useUserStore();
 
     const getAuctionProducts = async () => {
         try{
@@ -61,8 +65,7 @@
                 throw new Error("Error al obtener información");
             }
             const data = await response.json();
-            console.log(data);
-             auctionProducts.value = Array.isArray(data)
+            auctionProducts.value = Array.isArray(data)
             ? data.map(product => ({ ...product, offer: '' }))
             : [];
 
@@ -76,14 +79,40 @@
         if (product) product.offer = offer;
     };
 
-    const offerBid = (id) => {
+    const offerBid = async(id) => {
+        console.log(user);
         const product = auctionProducts.value.find(p => p.idProduct === id);
         if (product) {
             console.log(`Enviando puja de $${product.offer} para el producto ${product.name}`);
-            // Aquí iría tu lógica de envío a la API, etc.
+            try{
+                const result = await fetch('http://localhost:8080/bids',{
+                    method:"POST",
+                    header:{
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ idProduct: product.idProduct, idUser: user.user.user.idUser, amount:product.offer, idAuction: route.params.id, status:1})
+                });
+                if(!result.ok){
+                    throw new Error("Error al guardar info");
+                }
+                getAuctionProducts();
+            }catch(error){
+                console.error("Error", error)
+            }
         }
     };
 
-
+    const getAuctionAmount = async()=>{
+        try{
+            const response = await fetch(`http://localhost:8080/auction/amount/${route.params.id}`);
+            if(!response.ok){
+                throw new Error("Error al obtener información");
+            }
+            const data = await response.json();
+            amount.value = parseInt(data[0]['amount']);
+        }catch(error){
+            console.error('Error', error)
+        }
+    }   
 
 </script>
