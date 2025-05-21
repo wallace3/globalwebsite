@@ -73,7 +73,7 @@ const routes = [
   {path: '/portfolio-details-v2',component: PortfolioDetailsV2},
   {path: '/portfolio-details-v2/:id',component: PortfolioDetailsV2},
   {path: '/error',component: ErrorPage},
-  {path: '/my-profile',component: MyProfile},
+  {path: '/mi-perfil',component: MyProfile},
   {path: '/my-account',component: MyAccount},
   {path: '/edit-account',component: EditAccount},
   {path: '/order-history',component: OrderHistory},

@@ -23,11 +23,11 @@
                     @offerBid="offerBid"/>
                 </div>
 
-                <div class="text-center mt-7 md:mt-12">
+                <!--<div class="text-center mt-7 md:mt-12">
                     <router-link to="/shop-v1" class="btn btn-outline" data-text="Load More">
                         <span>Load More</span>
                     </router-link>
-                </div>
+                </div>-->
             </div>
         </div>
 

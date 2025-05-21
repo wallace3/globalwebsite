@@ -6,7 +6,7 @@
         </button>
         <div v-if="usermenu" class="hdr_profile_menu absolute z-50 top-full right-[50px] sm:right-[80px] min-w-[180px] sm:min-w-[220px] bg-white dark:bg-title py-[10px] sm:py-[20px] px-5 sm:px-[30px] border border-tertiary opacity-0 invisible transition-all transform translate-y-5 mt-[3px] profile-menu-active">
             <ul v-if="user.isAuthenticated" class="text-lg text-title dark:text-white leading-none">
-                <li class="py-[10px] duration-300 transform hover:translate-x-1 hover:text-tertiary"><a href="login.html">Mi Perfil</a></li>
+                <li class="py-[10px] duration-300 transform hover:translate-x-1 hover:text-tertiary"><router-link to="/mi-perfil">Mi Perfil</router-link></li>
                 <li class="py-[10px] duration-300 transform hover:translate-x-1 hover:text-tertiary" @click="logout()">Cerrar Sesión</li>
             </ul>
             <ul v-else>

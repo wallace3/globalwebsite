@@ -37,8 +37,15 @@
 
 <script setup>
 import { defineProps, defineEmits, ref, onMounted } from 'vue';
+import { useUserStore } from '@/stores/userStore';
+import { useRouter } from 'vue-router';
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
+
+
+const localOffers = ref({});
+const userStore = useUserStore();
+const route = useRouter();
 
 const props = defineProps({
     productList:Object,
@@ -47,7 +54,6 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['update:offer', 'offerBid']);
-const localOffers = ref({});
 
 onMounted(()=>{
     props.productList.forEach(item => {
@@ -70,6 +76,20 @@ const updateOffer = (id) => {
 };
 
 const triggerBid = (id, bid, price) => {
+     if(!userStore.isAuthenticated){
+        setTimeout(() => {
+            showToast('Debes iniciar sesión para participar', {
+                type: 'error',
+                autoClose: 3000,
+                position: 'bottom-left',
+                pauseOnHover: true
+            })
+            }, 300)
+        setTimeout(() => {
+            route.push('/login')
+        }, 3000)
+        return
+    }
     if(bid){
         if(parseInt(localOffers.value[id])<=parseInt(bid)){
             showToast('No puede ser menor o igual a la oferta actual', {
