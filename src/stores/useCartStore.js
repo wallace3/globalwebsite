@@ -13,8 +13,6 @@ export const useCartStore = defineStore('cart', () => {
 const cargarDelServidor = async () => {
     const userStore = useUserStore();
     if (!userStore.isAuthenticated || !userStore.user.user.idUser) return
-    console.log("si entra");
-    
     const res = await axios.get(`http://localhost:8080/cart/get/${userStore.user.user.idUser}`)
     carrito.value = res.data
 }
@@ -41,6 +39,10 @@ const quitar = async (id) => {
     mostrarCarrito.value = !mostrarCarrito.value
   }
 
+  function vaciarCarrito(){
+    carrito.value = [];
+  }
+
   const total = computed(() =>
     carrito.value.reduce((acc, p) => acc + parseFloat(p.price), 0)
   )
@@ -52,6 +54,7 @@ const quitar = async (id) => {
     total,
     mostrarCarrito,
     toggleCarrito,
-    cargarDelServidor
+    cargarDelServidor,
+    vaciarCarrito
   }
 })

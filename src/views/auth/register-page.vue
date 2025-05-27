@@ -9,7 +9,7 @@
             <div class="w-full md:w-1/2 lg:max-w-lg xl:max-w-3xl lg:w-full py-16 px-[20px] sm:px-8 lg:p-16 xl:p-24 relative z-10 flex items-center overflow-hidden">
                 <div class="mx-auto md:mx-0 max-w-md">
                     <h2 class="leading-none" data-aos="fade-up">Crear nueva cuenta</h2>
-                    <p class="text-lg mt-[15px]" data-aos="fade-up" data-aos-delay="100">Registrate y obten la posibilidad de adquirir piezas únicas</p>
+                    <p class="text-lg mt-[15px]" data-aos="fade-up" data-aos-delay="100">Regístrate y obtén la posibilidad de adquirir piezas únicas</p>
                     <div class="mt-7" data-aos="fade-up" data-aos-delay="200">
                         <label class="text-base sm:text-lg font-medium leading-none mb-2.5 block dark:text-white">Nombre(s)</label>
                         <input v-model="name" class="w-full h-12 md:h-14 bg-white dark:bg-transparent border border-bdr-clr focus:border-primary p-4 outline-none duration-300" type="email" placeholder="Ingresa tu nombre(s)">
@@ -27,7 +27,7 @@
                         <input v-model="password" class="w-full h-12 md:h-14 bg-white dark:bg-transparent border border-bdr-clr focus:border-primary p-4 outline-none duration-300 placeholder:text-xl placeholder:transform placeholder:translate-y-[10px]" type="password" placeholder="* * * * * * * *">
                     </div>
                     <div data-aos="fade-up" data-aos-delay="600">
-                        <button type="button" class="btn btn-theme-solid mt-[15px]" data-text="Registrar" @click="createClient()"><span>Regisrate</span></button>
+                        <button type="button" class="btn btn-theme-solid mt-[15px]" data-text="Registrar" @click="createClient()"><span>Regísrate</span></button>
                     </div>
                     <p class="text-lg mt-[15px]" data-aos="fade-up" data-aos-delay="700">¿ Ya tienes cuenta ?<router-link to="/login" class="text-primary font-medium ml-1 inline-block">Inicia sesión</router-link></p>
                 </div>

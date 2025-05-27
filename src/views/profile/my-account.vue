@@ -22,7 +22,7 @@
                     <div class="w-full md:w-auto md:flex-1 overflow-auto">
                         <div class="w-full max-w-[951px] bg-[#F8F8F9] dark:bg-dark-secondary p-5 sm:p-8 lg:p-[50px]">
                             <div>
-                                <span class="leading-none mt-3">Mi Cuenta</span>
+                                <span class="leading-none mt-3">Mi cuenta</span>
                             </div>
                         </div>
                         <div class="w-full max-w-[951px] bg-[#F8F8F9] dark:bg-dark-secondary p-5 sm:p-8 lg:p-[50px]">
@@ -34,7 +34,7 @@
                                     </div>
                                     
                                     <div>
-                                        <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2 sm:mb-3 block">Coreo Electrónico</label>
+                                        <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2 sm:mb-3 block">Coreo electrónico</label>
                                         <input v-model="user.user.user.email" class="w-full h-12 md:h-14 bg-white dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" type="text" placeholder="Enter your designation">
                                     </div>
                                 </div>

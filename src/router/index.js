@@ -50,6 +50,8 @@ import ContactPage from '@/views/inner-pages/contact-page.vue'
 import ProductCategory from '@/views/shop/product-category.vue'
 import AuctionsPage from '@/views/auctions/auctions-page.vue'
 import AuctionProductsPage from '@/views/auctions/products-page.vue'
+import SuccessPaymentPage from '@/views/payments/success-page.vue'
+import ErrorPaymentPage from '@/views/payments/error-page.vue'
 
 
 const routes = [
@@ -106,11 +108,13 @@ const routes = [
   {path: '/blog-details-v3',component:BlogDetailsV3},
   {path: '/blog-details-v3/:id',component:BlogDetailsV3},
   {path: '/blog-tag',component:BlogTag},
-  {path: '/contact',component:ContactPage},
+  {path: '/contacto',component:ContactPage},
   {path: '/product-category',component:ProductCategory},
   {path: '/subastas',component:AuctionsPage},
   {path: '/subasta/productos/:id',component:AuctionProductsPage},
-  {path: '/index-two',component:IndexThree}
+  {path: '/index-two',component:IndexThree},
+  {path: '/pagos/exito',component:SuccessPaymentPage},
+  {path: '/pagos/error',component:ErrorPaymentPage}
 
 ]
 

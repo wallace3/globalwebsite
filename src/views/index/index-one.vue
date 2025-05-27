@@ -104,7 +104,7 @@
                         <img :src="chair" alt="" class="mx-auto w-14 sm:w-24"/>                                               
                     </div>
                     <h3 class="leading-none mt-4 md:mt-6 text-2xl md:text-3xl">Categorías</h3>
-                    <p class="mt-3">Explora las categorías que global ofrece, donde encontrarás tesrosos a precio accesible. </p>
+                    <p class="mt-3">Explora las categorías que Global ofrece, donde encontrarás tesoros a precio accesible. </p>
                 </div>
                 <div class="max-w-[1720px] mx-auto relative group" data-aos="fade-up" data-aos-delay="100">
                     <swiper 
@@ -142,13 +142,13 @@
                         <img :src="sofa" alt="" class="mx-auto w-14 sm:w-24"/>                                             
                     </div>
                     <h3 class="leading-none mt-4 md:mt-6 text-2xl md:text-3xl">Nuevos Productos</h3>
-                    <p class="mt-3">Explora nuestros productos reciend añadidos al inventario y se el primero en tener la posibilidad de adquirirlos. </p>
+                    <p class="mt-3">Explora nuestros productos recién añadidos al inventario y sé el primero en tener la posibilidad de adquirirlos. </p>
                 </div>
                 <div data-aos="fade-up" data-aos-delay="100">
                     <LayoutOne :productList="products.slice(0,4)" :classList="'max-w-[1720px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-8'"  @agregar="agregarAlCarrito"/>
                 </div>
                 <div class="text-center mt-7 md:mt-12">
-                    <router-link to="/shop-v1" class="btn btn-outline" data-text="Todos los productos">
+                    <router-link to="/productos" class="btn btn-outline" data-text="Todos los productos">
                         <span>Todos los productos</span>
                     </router-link>
                 </div>
@@ -164,8 +164,8 @@
                             <div> 
                                 <img :src="like" class="w-14 sm:w-24" alt="" />                                                       
                             </div>
-                            <h3 class="leading-none mt-4 md:mt-6 text-2xl md:text-3xl">¿Por qué adquirir productos en global?</h3>
-                            <p class="mt-3">Global, cuenta con un equipo especializado en piezas de todo tipo, se garantiza que, todo producto que se venda en el sitio, ha sido estudiado.</p>
+                            <h3 class="leading-none mt-4 md:mt-6 text-2xl md:text-3xl">¿Por qué adquirir productos en Global?</h3>
+                            <p class="mt-3">Global cuenta con un equipo especializado en piezas de todo tipo, se garantiza que, todo producto que se venda en el sitio, ha sido estudiado.</p>
                         </div>
                         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-[30px]">
                             <div v-for="(item, index) in featureOne.slice(0,4)" :key="index" class="why-choose-card p-6 rounded-[10px]" data-aos="fade-up" :ata-aos-delay="item.delay">

@@ -22,7 +22,7 @@
                                 <p class="mt-[15px]"><b>Calle, #Ext:</b> {{item.street}} </p>
                                 <p class="mt-[15px]"><b>Colonia:</b> {{item.suburb}}</p>
                                 <p class="mt-[15px]"><b>Ciudad/Estado/País:</b> {{item.city}}, {{ item.state }}, {{ item.country }}</p>
-                                <p class="mt-[15px]"><b>CP:</b> {{item.cp}}</p>
+                                <p class="mt-[15px]"><b>Código postal:</b> {{item.cp}}</p>
                                 <p class="mt-[15px]"><b>Referencias:</b> {{item.reference}}</p>
                             </div>
                         </div>
@@ -56,8 +56,8 @@
                                         <input v-model="city" class="w-full h-12 md:h-14 bg-white dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" type="text" placeholder="Ingresa ciudad">
                                     </div>
                                     <div>
-                                        <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2 sm:mb-3 block">CP</label>
-                                        <input v-model="cp" class="w-full h-12 md:h-14 bg-white dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" type="text" placeholder="Ingresa CP">
+                                        <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2 sm:mb-3 block">Código postal</label>
+                                        <input v-model="cp" class="w-full h-12 md:h-14 bg-white dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" type="text" placeholder="Ingresa código postal">
                                     </div>
                                      
                                     <div>

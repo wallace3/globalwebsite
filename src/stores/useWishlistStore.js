@@ -37,6 +37,11 @@ function togglewishlist() {
   mostrarWishlist.value = !mostrarWishlist.value
 }
 
+function vaciarWishlist(){
+    wishlist.value = [];
+  }
+
+
 const total = computed(() =>
   wishlist.value.reduce((acc, p) => acc + parseFloat(p.price), 0)
 )
@@ -48,6 +53,7 @@ const total = computed(() =>
     total,
     mostrarWishlist,
     togglewishlist,
-    cargarDelServidor
+    cargarDelServidor,
+    vaciarWishlist
   }
 })

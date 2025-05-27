@@ -116,50 +116,6 @@
                                 </div>
                             </div>
                             <div class="mt-6 pt-6 border-t border-bdr-clr dark:border-bdr-clr-drk">
-                                <div class="flex justify-between flex-wrap text-base sm:text-lg text-title dark:text-white font-medium mt-3">
-                                    <div>
-                                        <label class="flex items-center gap-[10px] categoryies-iteem">
-                                            <input class="appearance-none hidden" type="radio" name="item-type">
-                                            <span class="w-4 h-4 rounded-full border border-title dark:border-white flex items-center justify-center duration-300">
-                                                <svg class="duration-300 opacity-0" width="8" height="8" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <rect width="10" height="10" rx="5" fill="#BB976D"/>
-                                                </svg>
-                                            </span>
-                                            <span class="sm:text-lg text-title dark:text-white block sm:leading-none transform translate-y-[3px] select-none">Free Shipping:</span>
-                                        </label>
-                                    </div>
-                                    <span> $0</span>
-                                </div>
-                                <div class="flex justify-between flex-wrap text-base sm:text-lg text-title dark:text-white font-medium mt-3">
-                                    <div>
-                                        <label class="flex items-center gap-[10px] categoryies-iteem">
-                                            <input class="appearance-none hidden" type="radio" name="item-type">
-                                            <span class="w-4 h-4 rounded-full border border-title dark:border-white flex items-center justify-center duration-300">
-                                                <svg class="duration-300 opacity-0" width="8" height="8" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <rect width="10" height="10" rx="5" fill="#BB976D"/>
-                                                </svg>
-                                            </span>
-                                            <span class="sm:text-lg text-title dark:text-white block sm:leading-none transform translate-y-[3px] select-none">Fast Shipping:</span>
-                                        </label>
-                                    </div>
-                                    <span>$10</span>
-                                </div>
-                                <div class="flex justify-between flex-wrap text-base sm:text-lg text-title dark:text-white font-medium mt-3">
-                                    <div>
-                                        <label class="flex items-center gap-[10px] categoryies-iteem">
-                                            <input class="appearance-none hidden" type="radio" name="item-type">
-                                            <span class="w-4 h-4 rounded-full border border-title dark:border-white flex items-center justify-center duration-300">
-                                                <svg class="duration-300 opacity-0" width="8" height="8" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <rect width="10" height="10" rx="5" fill="#BB976D"/>
-                                                </svg>
-                                            </span>
-                                            <span class="sm:text-lg text-title dark:text-white block sm:leading-none transform translate-y-[3px] select-none"> Local Pickup:</span>
-                                        </label>
-                                    </div>
-                                    <span>$15</span>
-                                </div>
-                            </div>
-                            <div class="mt-6 pt-6 border-t border-bdr-clr dark:border-bdr-clr-drk">
                                 <div class="flex justify-between flex-wrap font-semibold leading-none text-2xl md:text-3xl">
                                     <span>Total:</span>
                                     <span>&nbsp;$ {{ cart.total }}</span>
@@ -167,33 +123,7 @@
                             </div>
                         </div> 
                         <div class="mt-7 md:mt-12">
-                            <h4 class="font-semibold leading-none text-xl md:text-2xl mb-6 md:mb-10">Payment Method</h4>
-                            <div class="flex gap-5 sm:gap-8 md:gap-12 flex-wrap">
-                                <div>
-                                    <label class="flex items-center gap-[10px] categoryies-iteem">
-                                        <input class="appearance-none hidden" type="radio" name="item-type">
-                                        <span class="w-4 h-4 rounded-full border border-title dark:border-white flex items-center justify-center duration-300">
-                                            <svg class="duration-300 opacity-0" width="8" height="8" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <rect width="10" height="10" rx="5" fill="#BB976D"/>
-                                            </svg>
-                                        </span>
-                                        <span class="sm:text-lg text-title dark:text-white block sm:leading-none transform translate-y-[3px] select-none">Cash On Delivery</span>
-                                    </label>
-                                    <p class="ml-6 text-[15px] leading-none mt-2">Time ( 07 - 10 ) Days</p>
-                                </div>
-                                <div>
-                                    <label class="flex items-center gap-[10px] categoryies-iteem">
-                                        <input class="appearance-none hidden" type="radio" name="item-type">
-                                        <span class="w-4 h-4 rounded-full border border-title dark:border-white flex items-center justify-center duration-300">
-                                            <svg class="duration-300 opacity-0" width="8" height="8" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <rect width="10" height="10" rx="5" fill="#BB976D"/>
-                                            </svg>
-                                        </span>
-                                        <span class="sm:text-lg text-title dark:text-white block sm:leading-none transform translate-y-[3px] select-none">Debit / Credit Card</span>
-                                    </label>
-                                    <p class="ml-6 text-[15px] leading-none mt-2">Time ( 07 - 10 ) Days</p>
-                                </div>
-                            </div>
+                            <h4 class="font-semibold leading-none text-xl md:text-2xl mb-6 md:mb-10">Pago</h4>
                             <div class="mt-6 sm:mt-8 md:mt-10">
                                 <label class="flex items-center gap-2 iam-agree">
                                     <input class="appearance-none hidden" type="checkbox" name="categories">
@@ -202,12 +132,12 @@
                                             <path d="M18.3819 0.742676L6.10461 11.8998L2.25731 8.06381L0.763672 9.55745L6.20645 15.0002L20 2.32686L18.3819 0.742676Z"/>
                                         </svg>
                                     </span>
-                                    <span class="text-base sm:text-lg text-title dark:text-white leading-none sm:leading-none select-none inline-block transform translate-y-[3px]">I Agree all terms & Conditions</span> 
+                                    <span class="text-base sm:text-lg text-title dark:text-white leading-none sm:leading-none select-none inline-block transform translate-y-[3px]">Acepto terminos y condiciones</span> 
                                 </label>
                             </div>
                             <div class="mt-4 md:mt-6 flex flex-wrap gap-3">
-                                <router-link to="#" class="btn btn-outline" data-text="Back to Cart"><span>Back to Cart</span></router-link>
-                                <router-link to="#" class="btn btn-theme-solid" data-text="Place to Order"><span>Place to Order</span></router-link>
+                                <router-link to="#" class="btn btn-outline" data-text="Regresar al carrito"><span>Regresar</span></router-link>
+                                <button type="button" class="btn btn-theme-solid" data-text="Ir al pago" @click="checkout"><span>Pagar</span></button>
                             </div>
                         </div>
                     </div>
@@ -226,16 +156,52 @@
     import NavbarOne from '@/components/navbar/navbar-one.vue';
     import FooterOne from '@/components/footer/footer-one.vue';
     import ScrollToTop from '@/components/scroll-to-top.vue';
-
+    import { loadStripe } from '@stripe/stripe-js';
     import bg from '@/assets/img/shortcode/breadcumb.jpg'
-
+    import { storeToRefs } from 'pinia'
     import { useCartStore } from '@/stores/useCartStore';
-    const cart = useCartStore();
-
+    import { useUserStore } from '@/stores/userStore';
     import { onMounted, ref } from 'vue';
+    
     import Aos from 'aos';
 
+    const user = useUserStore();
     const open = ref(false)
+    const stripePromise = loadStripe('pk_test_51RRhZsEEk2wvGozKFIO8R12ub4eCTEcDEo1gvGnohTOfvJIAjsgaEA4tnaSMbjknoLhN4VY70ESWLfbnFp2ZlaDR00GQDJaGff');
+    const cart = useCartStore();
+    const { carrito } = storeToRefs(cart) // tu carrito
+
+    const checkout = async () => {
+        const itemsToSend = carrito.value.map(item => ({
+            id: item.idProduct, // ID interno
+            name: item.name,
+            description: item.description,
+            price: parseFloat(item.price),
+            user_id: parseInt(user.user.user.idUser),
+            quantity: 1 // o item.quantity si manejas cantidad
+        }))
+        
+        try {
+            const response = await fetch('http://localhost:8080/stripe/createCheckoutSession', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(itemsToSend)
+            })
+            const data = await response.json()
+            const stripe = await stripePromise
+            const result = await stripe.redirectToCheckout({
+                sessionId: data.id
+            })
+
+            if (result.error) {
+                console.error('Error en Stripe:', result.error.message)
+            }
+        } catch (error) {
+            console.error('Error al crear la sesión de pago:', error)
+        }
+    };
 
     onMounted(()=>{
         Aos.init()

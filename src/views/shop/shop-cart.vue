@@ -8,7 +8,7 @@
                 <ul class="flex items-center justify-center gap-[10px] text-base md:text-lg leading-none font-normal text-white mt-3 md:mt-4">
                     <li><router-link to="/">Inicio</router-link></li>
                     <li>/</li>
-                    <li class="text-primary">Carrito de Compras</li>
+                    <li class="text-primary">Carrito de compras</li>
                 </ul>
             </div>
         </div>

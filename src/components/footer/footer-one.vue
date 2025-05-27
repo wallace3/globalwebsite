@@ -5,7 +5,7 @@
                 <div class="wrapper-logo">
                     <div class="main-logo">
                         <img class="sm:mx-auto w-[150px] sm:w-auto" :src="logoG" alt="logo">
-                        <p class="mt-4 text-white-light max-w-[522px] sm:mx-auto">Global trade & auctions, es un servicio donde puedes encontrar exclenetes piezas y ofertar las tuyas. </p>
+                        <p class="mt-4 text-white-light max-w-[522px] sm:mx-auto">Global trade & auctions, es un servicio donde puedes encontrar excelentes piezas y ofertar las tuyas. </p>
                         <div class="flex items-center sm:justify-center gap-4 mt-6">
                             <router-link to="#" class="w-10 h-10 rounded-full border border-white border-opacity-50 flex items-center justify-center group hover:border-primary duration-300" aria-label="Facebook">
                                 <svg class="fill-current text-white group-hover:text-primary duration-300 " width="9" height="17" viewBox="0 0 9 17" fill="none" xmlns="http://www.w3.org/2000/svg">

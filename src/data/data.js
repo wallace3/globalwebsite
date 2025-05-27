@@ -14,7 +14,7 @@ import shop9 from '@/assets/img/gallery/shop-01/shop-09.jpg'
 import shop10 from '@/assets/img/gallery/shop-01/shop-10.jpg'
 
 import fea1 from '@/assets/img/svg/fea-1.svg'
-import fea2 from '@/assets/img/svg/fea-2.svg'
+//import fea2 from '@/assets/img/svg/fea-2.svg'
 import fea3 from '@/assets/img/svg/fea-3.svg'
 import fea4 from '@/assets/img/svg/fea-4.svg'
 import fea5 from '@/assets/img/svg/fea-5.svg'
@@ -221,13 +221,7 @@ export const featureOne = [
         id:1,
         image:fea1,
         title:'Envío',
-        desc:'Te acompaños en el trayecto de tu pedido, para la seguridad de que tu pieza llegará a la puerta de tu casa.'
-    },
-    {
-        id:2,
-        image:fea2,
-        title:'Easy to Return',
-        desc:`Experience hassle-free returns with our easy-to-use return policy. If you're not satisfied, simply return your product for a quick.`
+        desc:'Te acompañamos en el trayecto de tu pedido, para la seguridad de que tu pieza llegará a la puerta de tu casa.'
     },
     {
         id:3,

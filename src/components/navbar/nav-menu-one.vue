@@ -6,17 +6,14 @@
         </button>
         <div v-if="usermenu" class="hdr_profile_menu absolute z-50 top-full right-[50px] sm:right-[80px] min-w-[180px] sm:min-w-[220px] bg-white dark:bg-title py-[10px] sm:py-[20px] px-5 sm:px-[30px] border border-tertiary opacity-0 invisible transition-all transform translate-y-5 mt-[3px] profile-menu-active">
             <ul v-if="user.isAuthenticated" class="text-lg text-title dark:text-white leading-none">
-                <li class="py-[10px] duration-300 transform hover:translate-x-1 hover:text-tertiary"><router-link to="/mi-perfil">Mi Perfil</router-link></li>
-                <li class="py-[10px] duration-300 transform hover:translate-x-1 hover:text-tertiary" @click="logout()">Cerrar Sesión</li>
+                <li class="py-[10px] duration-300 transform hover:translate-x-1 hover:text-tertiary"><router-link to="/mi-perfil">Mi perfil</router-link></li>
+                <li class="py-[10px] duration-300 transform hover:translate-x-1 hover:text-tertiary" @click="logout()">Cerrar sesión</li>
             </ul>
             <ul v-else>
                 <li class="py-[10px] duration-300 transform hover:translate-x-1 hover:text-tertiary"><router-link to="/login">Iniciar Sesión</router-link></li>
                 <li class="py-[10px] duration-300 transform hover:translate-x-1 hover:text-tertiary"><router-link to="/register">Registrate</router-link></li>
             </ul>
         </div>
-        <button class="hdr_search_btn" aria-label="search">
-            <i class="mdi mdi-magnify text-title dark:text-white text-[24px] sm:text-[28px]"></i>
-        </button>
         <button class="relative hdr_wishList_btn"  @click="wishlist.togglewishlist">
             <span class="absolute w-[22px] h-[22px] bg-secondary top-[0px] -right-[11px] rounded-full flex items-center justify-center text-xs leading-none text-white">{{ wishlist.wishlist.length }}</span>
             <i class="mdi mdi-cards-heart-outline text-title dark:text-white text-[24px] sm:text-[28px]"></i>
@@ -55,7 +52,7 @@
             <span class="mdi mdi-shopping-outline text-title dark:text-white text-[24px] sm:text-[28px]"></span>
         </button>
         <div v-if="cart.mostrarCarrito" class="hdr_cart_popup w-80 md:w-96 absolute z-50 top-full right-0 sm:right-10 xl:right-0 bg-white dark:bg-title p-5 md:p-[30px] border border-primary">
-            <h4 class="font-medium leading-none mb-4 text-xl md:text-2xl">Carrito de Compras</h4>
+            <h4 class="font-medium leading-none mb-4 text-xl md:text-2xl">Carrito de compras</h4>
             <div>
                 <div class="hdr-cart-item">
                     <div v-for="item in cart.carrito" :key="item.idProduct" class="flex gap-[15px] relative pb-[15px] mb-[15px] border-b border-bdr-clr dark:border-bdr-clr-drk group">
