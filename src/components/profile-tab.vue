@@ -3,17 +3,14 @@
         <li class="pb-3 lg:pb-6 pl-6 lg:pl-12" :class="{'active text-primary' : current === '/my-profile'}">
             <router-link class="duration-300 hover:text-primary" to="/mi-perfil">Mi Perfil</router-link>
         </li>
-        <li class="py-3 lg:py-6 pl-6 lg:pl-12" :class="{'active text-primary' : current === '/my-account'}">
-            <router-link class="duration-300 hover:text-primary" to="/my-account">Mi cuenta</router-link>
+        <li class="py-3 lg:py-6 pl-6 lg:pl-12" :class="{'active text-primary' : current === '/mi-cuenta'}">
+            <router-link class="duration-300 hover:text-primary" to="/mi-cuenta">Mi cuenta</router-link>
         </li>
-        <li class="py-3 lg:py-6 pl-6 lg:pl-12" :class="{'active text-primary' : current === '/edit-account'}">
-            <router-link class="duration-300 hover:text-primary" to="/edit-account">Mis Direcciones</router-link>
+        <li class="py-3 lg:py-6 pl-6 lg:pl-12" :class="{'active text-primary' : current === '/direcciones'}">
+            <router-link class="duration-300 hover:text-primary" to="/direcciones">Mis Direcciones</router-link>
         </li>
-        <li class="py-3 lg:py-6 pl-6 lg:pl-12" :class="{'active text-primary' : current === '/order-history'}">
-            <router-link class="duration-300 hover:text-primary" to="/order-history">Order History</router-link>
-        </li>
-        <li class="pt-3 lg:pt-6 pl-6 lg:pl-12" :class="{'active text-primary' : current === '/login'}">
-            <router-link class="duration-300 hover:text-primary" to="/login">Cerrar Sesión</router-link>
+        <li class="py-3 lg:py-6 pl-6 lg:pl-12" :class="{'active text-primary' : current === '/ordenes'}">
+            <router-link class="duration-300 hover:text-primary" to="/ordenes">Mis Compras</router-link>
         </li>
     </ul>
 </template>
