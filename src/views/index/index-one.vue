@@ -121,15 +121,16 @@
                         }"
                         class="owl-carousel hv1-pdct-ctgry-slider block"> 
                         <swiper-slide v-for="(item, index) in categories" :key="index" class="relative block">
-                            <img class="w-full object-cover" :src="'http://localhost:8080/' + item.url" alt="product"/>
-                            <div class="absolute bottom-7 left-0 px-5 transform w-full flex justify-start">
-                                <div class="p-[15px] bg-white dark:bg-title w-auto">
-                                    <span class="md:text-xl text-primary font-medium leading-none">{{item.total_productos}} productos</span>
-                                    <h4 class="text-xl md:text-2xl mt-[10px] font-semibold leading-[1.5]">{{item.name}}</h4>
+                            <router-link :to="`categories/${item.name}`">
+                                <img class="w-full object-cover" :src="'http://localhost:8080/' + item.url" alt="product"/>
+                                <div class="absolute bottom-7 left-0 px-5 transform w-full flex justify-start">
+                                    <div class="p-[15px] bg-white dark:bg-title w-auto">
+                                        <span class="md:text-xl text-primary font-medium leading-none">{{item.total_productos}} productos</span>
+                                        <h4 class="text-xl md:text-2xl mt-[10px] font-semibold leading-[1.5]">{{item.name}}</h4>
+                                    </div>
                                 </div>
-                            </div>
+                            </router-link>
                         </swiper-slide>
-                        
                     </swiper>
                 </div>
             </div>
@@ -167,8 +168,8 @@
                             <h3 class="leading-none mt-4 md:mt-6 text-2xl md:text-3xl">¿Por qué adquirir productos en Global?</h3>
                             <p class="mt-3">Global cuenta con un equipo especializado en piezas de todo tipo, se garantiza que, todo producto que se venda en el sitio, ha sido estudiado.</p>
                         </div>
-                        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-[30px]">
-                            <div v-for="(item, index) in featureOne.slice(0,4)" :key="index" class="why-choose-card p-6 rounded-[10px]" data-aos="fade-up" :ata-aos-delay="item.delay">
+                        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-[30px]">
+                            <div v-for="(item, index) in featureOne.slice(0,3)" :key="index" class="why-choose-card p-6 rounded-[10px]" data-aos="fade-up" :ata-aos-delay="item.delay">
                                 <img :src="item.image" class='size-12' alt="">
                                 <h4 class="font-semibold leading-none mt-5 sm:mt-7 text-xl md:text-2xl">{{item.title}}</h4>
                                 <p class="mt-[15px]">{{item.desc}}</p>
@@ -220,6 +221,7 @@
     const banners = ref([]);
     const categories = ref([]);
     const products = ref([]);
+    const apiUrl = process.env.VUE_APP_API_URL || 'http://localhost:8080'
 
     onMounted(() => {
         Aos.init()
@@ -230,7 +232,7 @@
 
     const getBanners = async () => {
         try{
-            const result = await fetch('http://localhost:8080/banners');
+            const result = await fetch(`${apiUrl}/banners`);
             if (!result.ok) {
                 throw new Error(`Error HTTP: ${result.status}`);
             }
@@ -243,7 +245,7 @@
 
     const getCategories = async () => {
         try{
-            const result = await fetch('http://localhost:8080/categories/active');
+            const result = await fetch(`${apiUrl}/categories/active`);
             if (!result.ok) {
                 throw new Error(`Error HTTP: ${result.status}`);
             }
@@ -256,7 +258,7 @@
     
     const getProducts = async () => {
         try{
-            const result = await fetch('http://localhost:8080/products/categories');
+            const result = await fetch(`${apiUrl}/products/categories`);
             if(!result.ok){
                 throw new Error(`Error HTTP: ${result.status}`);
             }

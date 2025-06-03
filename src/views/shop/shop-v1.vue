@@ -17,7 +17,7 @@
             <div class="container-fluid">
                 <div class="flex items-start justify-between gap-8 max-w-[1720px] mx-auto flex-col lg:flex-row border-b border-bdr-clr dark:border-bdr-clr-drk pb-8 md:pb-[50px]" >
                     <div>
-                        <h4 class="font-medium leading-none text-xl sm:text-2xl mb-5 sm:mb-6">Choose Category</h4>
+                        <h4 class="font-medium leading-none text-xl sm:text-2xl mb-5 sm:mb-6">Seleccionar Categoría</h4>
                         <div class="flex flex-wrap gap-[10px] md:gap-[15px]">
                             <router-link class="btn btn-theme-outline btn-sm shop1-button" to="/product-category" data-text="Sofa & Chair"><span>Sofa & Chair</span></router-link>
                             <router-link class="btn btn-theme-outline btn-sm shop1-button" to="/product-category" data-text="Full Interior"><span>Full Interior</span></router-link>
@@ -97,6 +97,8 @@
     const selectedOption = ref('Navana Furniture')
     const products = ref([]);
 
+    const apiUrl = process.env.VUE_APP_API_URL || 'http://localhost:8080'
+
     const options = [
         "Navana Furniture",
         "RFL Furniture",
@@ -105,13 +107,13 @@
         "Luxury Furniture",
     ];
 
-    const toggleDropdown = () =>{
+    const toggleDropdown = () =>  {
         isOpen.value = !isOpen.value
     }
 
     const getProducts = async () => {
         try{
-            const result = await fetch('http://localhost:8080/products/categories');
+            const result = await fetch(`${apiUrl}/products/categories`);
             if(!result.ok){
                 throw new Error(`Error HTTP: ${result.status}`);
             }
@@ -122,6 +124,7 @@
         }
     }
 
+  
     const handleSelect = (option,event) => {
         event.stopPropagation();
         selectedOption.value = option

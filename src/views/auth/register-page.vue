@@ -60,10 +60,11 @@
     const password = ref('');
     const lastName = ref('');
     const email = ref('');
+    const apiUrl = process.env.VUE_APP_API_URL || 'http://localhost:8080'
 
     const createClient = async()=>{
         try{
-            const response = await fetch('http://localhost:8080/users',{
+            const response = await fetch(`${apiUrl}/users`,{
                 method:'POST',
                 headers:{
                     'Content-Type': 'application/json',

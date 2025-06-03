@@ -81,6 +81,7 @@
 
     const auctions = ref([]);
     const intervals = [];
+    const apiUrl = process.env.VUE_APP_API_URL || 'http://localhost:8080'
 
     function parseFechaMysql(fechaStr) {
         const fechaISO = fechaStr.replace(' ', 'T');
@@ -123,7 +124,7 @@
 
     const getAuctions = async () => {
         try {
-            const result = await fetch('http://localhost:8080/auction/active');
+            const result = await fetch(`${apiUrl}/auction/active`);
             if (!result.ok) throw new Error('Error al cargar información');
 
             const data = await result.json();

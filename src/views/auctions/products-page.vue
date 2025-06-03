@@ -57,10 +57,12 @@
     const auctionProducts = ref([]);
     const amount = ref(null);
     const user = useUserStore();
+    const apiUrl = process.env.VUE_APP_API_URL || 'http://localhost:8080'
+
 
     const getAuctionProducts = async () => {
         try{
-            const response = await fetch(`http://localhost:8080/auction/details/products/${route.params.id}`)
+            const response = await fetch(`${apiUrl}/auction/details/products/${route.params.id}`)
             if(!response.ok){
                 throw new Error("Error al obtener información");
             }
@@ -85,7 +87,7 @@
         if (product) {
             console.log(`Enviando puja de $${product.offer} para el producto ${product.name}`);
             try{
-                const result = await fetch('http://localhost:8080/bids',{
+                const result = await fetch(`${apiUrl}/bids`,{
                     method:"POST",
                     header:{
                         'Content-Type': 'application/json',
@@ -104,7 +106,7 @@
 
     const getAuctionAmount = async()=>{
         try{
-            const response = await fetch(`http://localhost:8080/auction/amount/${route.params.id}`);
+            const response = await fetch(`${apiUrl}/auction/amount/${route.params.id}`);
             if(!response.ok){
                 throw new Error("Error al obtener información");
             }

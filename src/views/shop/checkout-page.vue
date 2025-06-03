@@ -169,8 +169,9 @@
     const open = ref(false)
     const stripePromise = loadStripe('pk_test_51RRhZsEEk2wvGozKFIO8R12ub4eCTEcDEo1gvGnohTOfvJIAjsgaEA4tnaSMbjknoLhN4VY70ESWLfbnFp2ZlaDR00GQDJaGff');
     const cart = useCartStore();
-    const { carrito } = storeToRefs(cart) // tu carrito
-
+    const { carrito } = storeToRefs(cart) // tu 
+    const apiUrl = process.env.VUE_APP_API_URL || 'http://localhost:8080'
+    
     const checkout = async () => {
         const itemsToSend = carrito.value.map(item => ({
             id: item.idProduct, // ID interno
@@ -182,7 +183,7 @@
         }))
         
         try {
-            const response = await fetch('http://localhost:8080/stripe/createCheckoutSession', {
+            const response = await fetch(`${apiUrl}/stripe/createCheckoutSession`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

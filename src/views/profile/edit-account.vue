@@ -122,10 +122,11 @@
     const suburb = ref('');
     const name = ref('');
     const addresses = ref([]);
+    const apiUrl = process.env.VUE_APP_API_URL || 'http://localhost:8080'
 
     const addAddress = async() => {
         try{
-            const response = await fetch('http://localhost:8080/address',{
+            const response = await fetch(`${apiUrl}/address`,{
                 method:"POST",
                 header:{
                    'Content-Type': 'application/json',
@@ -151,7 +152,7 @@
 
     const getAddresses = async() => {
         try{
-            const response = await fetch(`http://localhost:8080/addresses/${user.user.user.idUser}`);
+            const response = await fetch(`${apiUrl}/addresses/${user.user.user.idUser}`);
             if(!response.ok){
                 throw new Error("Error al obtener direcciones");
             }
@@ -164,7 +165,7 @@
 
     const setDefault = async(id) => {
         try{
-            const response = await fetch(`http://localhost:8080/address/default/${id}/${user.user.user.idUser}`,{
+            const response = await fetch(`${apiUrl}/address/default/${id}/${user.user.user.idUser}`,{
                 method:"PUT",
                 header: {
                     "Content-Type":"application/json"

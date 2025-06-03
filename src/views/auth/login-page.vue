@@ -49,9 +49,10 @@
     const email = ref('');
     const password = ref('');
     const userStore = useUserStore()
+    const apiUrl = process.env.VUE_APP_API_URL || 'http://localhost:8080'
 
     const login = async()=>{
-        const response = await fetch('http://localhost:8080/users/login',{
+        const response = await fetch(`${apiUrl}/users/login`,{
             method: "POST",
             headers:{
                 'Content-Type': 'application/json'

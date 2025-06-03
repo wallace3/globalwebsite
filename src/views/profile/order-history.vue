@@ -84,6 +84,7 @@
     const user = useUserStore();
     const detailsModal = ref(false);
     const details = ref([]);
+    const apiUrl = process.env.VUE_APP_API_URL || 'http://localhost:8080'
 
     const columns = [
         { title: 'ID Orden', data: 'idOrder' },
@@ -124,7 +125,7 @@
     };
 
     const getOrders = async() => {
-        const response = await fetch(`http://localhost:8080/stripe/history/${user.user.user.idUser}`)
+        const response = await fetch(`${apiUrl}/stripe/history/${user.user.user.idUser}`)
         if(!response.ok){
             throw new Error("Error al obtener información del endpoint");
         }
@@ -138,7 +139,7 @@
 
     window.getDetails = async function (orderId) {
         try {
-            const response = await fetch(`http://localhost:8080/stripe/orderDetails/${orderId}`);
+            const response = await fetch(`${apiUrl}/stripe/orderDetails/${orderId}`);
             if (!response.ok) throw new Error("Error al obtener detalles");
             const data = await response.json();
             console.log(data);

@@ -49,9 +49,11 @@ const params = new URLSearchParams(window.location.search)
 const sessionId = params.get('session_id')  
 const cart = useCartStore();
 const infoPayment = ref([])
+const apiUrl = process.env.VUE_APP_API_URL || 'http://localhost:8080'
+
 
 const getInfo = async()=>{
-    const response = await fetch(`http://localhost:8080/stripe/sessioninfo/${sessionId}`)
+    const response = await fetch(`${apiUrl}/stripe/sessioninfo/${sessionId}`)
     if(!response.ok){
         throw new Error("Ocurrio un error");
     }
