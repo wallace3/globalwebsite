@@ -95,7 +95,8 @@
     import Aos from 'aos';
 
     const user = useUserStore();
-    const stripePromise = loadStripe('pk_test_51RRhZsEEk2wvGozKFIO8R12ub4eCTEcDEo1gvGnohTOfvJIAjsgaEA4tnaSMbjknoLhN4VY70ESWLfbnFp2ZlaDR00GQDJaGff');
+    const stripePublicKey = process.env.VUE_APP_STRIPE_PUBLIC_KEY;
+    const stripePromise = loadStripe(stripePublicKey);
     const cart = useCartStore();
     const { carrito } = storeToRefs(cart) // tu 
     const apiUrl = process.env.VUE_APP_API_URL || 'http://localhost:8080'
