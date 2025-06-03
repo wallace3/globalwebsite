@@ -16,77 +16,6 @@
         <div class="s-py-100">
             <div class="container">
                 <div class="max-w-[1220px] mx-auto grid lg:grid-cols-2 gap-[30px] lg:gap-[70px]">
-                    <div class="bg-[#FAFAFA] dark:bg-dark-secondary p-[30px] md:p-[40px] lg:p-[50px] border border-[#17243026] border-opacity-15 rounded-xl" data-aos="fade-up">
-                        
-                        <p class='mb-5 w-full bg-white dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300 whitespace-normal'>Are you missing your coupon code ? 
-                        <button @click="open = !open" class='ml-1 add-coupon-code underline text-[#209A60]'> Click here to add</button>
-                        </p>
-                        
-                        <div v-if="open" class="coupon-wrapper gap-3 md:flex mb-[30px]">
-                            <input class="max-w-[220px] w-full h-12 md:h-14 bg-white dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" type="text" placeholder="Coupon code">
-                            <router-link to="#" class="btn btn-sm-px btn-theme-solid " data-text="Apply coupon">
-                                <span>Apply coupon</span>
-                            </router-link>
-                        </div>
-
-                        
-                        <h4 class="font-semibold leading-none text-xl md:text-2xl mb-6 md:mb-[30px]">
-                            Datos de Envío
-                        </h4>
-                        <div class="grid gap-5 md:gap-6">
-                            <div>
-                                <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2 sm:mb-3 block">Nombre Completo</label>
-                                <input class="w-full h-12 md:h-14 bg-white dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" type="text" placeholder="Enter your full name">
-                            </div>
-                            
-                            <div>
-                                <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2 sm:mb-3 block">Correo Electrónico</label>
-                                <input class="w-full h-12 md:h-14 bg-white dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" type="text" placeholder="Enter your email address">
-                            </div>
-
-                            <div>
-                                <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2 sm:mb-3 block">Teléfono</label>
-                                <input class="w-full h-12 md:h-14 bg-white dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" type="number" placeholder="Type your phone number">
-                            </div>
-                        </div>
-
-                        <div class="grid md:grid-cols-2 gap-5 md:gap-6">
-                            <div class="mt-5">
-                                <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2 sm:mb-3 block">Estado</label>
-                                <select class="nice-select select-active p-4 !bg-white dark:!bg-dark-secondary">
-                                    <option value={1}>Sylht</option>
-                                    <option value={2}>Dhaka</option>
-                                    <option value={2}>Chittagong</option>
-                                    <option value={2}>Rajshahi</option>
-                                    <option value={2}>Bogura</option>
-                                </select>
-                            </div>
-
-                            <div class="mt-5">
-                                <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2 sm:mb-3 block">Código Postal</label>
-                                <input class="w-full h-12 md:h-14 bg-white dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" type="text" placeholder="1217">
-                            </div>
-
-                            <div>
-                                <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2 sm:mb-3 block">Address Line 1</label>
-                                <input class="w-full h-12 md:h-14 bg-white dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" type="number" placeholder="Your full address">
-                            </div>
-
-                            <div>
-                                <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2 sm:mb-3 block">
-                                    Address Line 2
-                                </label>
-                                <input class="w-full h-12 md:h-14 bg-white dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" type="number" placeholder="Your full address">
-                            </div>
-                        </div>
-                        <div class="mt-5">
-                            <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2 sm:mb-3 block">
-                                Información adicional
-                            </label>
-                            <textarea class="w-full h-[120px] bg-white dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" name="Message" placeholder="Type your message"></textarea>
-                        </div>
-                    </div>
-
                     <div data-aos="fade-up" data-aos-delay={200}>
                         <div class="bg-[#FAFAFA] dark:bg-dark-secondary pt-[30px] md:pt-[40px] lg:pt-[50px] px-[30px] md:px-[40px] lg:px-[50px] pb-[30px] border border-[#17243026] border-opacity-15 rounded-xl">   
                             <h4 class="font-semibold leading-none text-xl md:text-2xl mb-6 md:mb-10">
@@ -96,7 +25,7 @@
                                 <div v-for="item in cart.carrito" v-bind:key="item.idCart" class="flex items-center justify-between gap-5" >
                                     <div class="flex items-center gap-3 md:gap-4 lg:gap-6 cart-product flex-wrap">
                                         <div class="w-16 sm:w-[70px] flex-none">
-                                            <img :src="'http://localhost:8080/' + item.image_url" alt="product">
+                                            <img :src="`${apiUrl}/` + item.image_url" alt="product">
                                         </div>
                                         <div class="flex-1">
                                             <h6 class="leading-none font-medium">{{ item.name }}</h6>
@@ -136,7 +65,7 @@
                                 </label>
                             </div>
                             <div class="mt-4 md:mt-6 flex flex-wrap gap-3">
-                                <router-link to="#" class="btn btn-outline" data-text="Regresar al carrito"><span>Regresar</span></router-link>
+                                <router-link to="cart" class="btn btn-outline" data-text="Regresar al carrito"><span>Regresar</span></router-link>
                                 <button type="button" class="btn btn-theme-solid" data-text="Ir al pago" @click="checkout"><span>Pagar</span></button>
                             </div>
                         </div>
@@ -161,12 +90,11 @@
     import { storeToRefs } from 'pinia'
     import { useCartStore } from '@/stores/useCartStore';
     import { useUserStore } from '@/stores/userStore';
-    import { onMounted, ref } from 'vue';
+    import { onMounted} from 'vue';
     
     import Aos from 'aos';
 
     const user = useUserStore();
-    const open = ref(false)
     const stripePromise = loadStripe('pk_test_51RRhZsEEk2wvGozKFIO8R12ub4eCTEcDEo1gvGnohTOfvJIAjsgaEA4tnaSMbjknoLhN4VY70ESWLfbnFp2ZlaDR00GQDJaGff');
     const cart = useCartStore();
     const { carrito } = storeToRefs(cart) // tu 

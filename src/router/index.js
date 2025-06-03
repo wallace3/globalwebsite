@@ -52,6 +52,7 @@ import AuctionsPage from '@/views/auctions/auctions-page.vue'
 import AuctionProductsPage from '@/views/auctions/products-page.vue'
 import SuccessPaymentPage from '@/views/payments/success-page.vue'
 import ErrorPaymentPage from '@/views/payments/error-page.vue'
+import CategoriesProducts from '@/views/shop/categories-products.vue'
 
 
 const routes = [
@@ -114,7 +115,8 @@ const routes = [
   {path: '/subasta/productos/:id',component:AuctionProductsPage},
   {path: '/index-two',component:IndexThree},
   {path: '/pagos/exito',component:SuccessPaymentPage},
-  {path: '/pagos/error',component:ErrorPaymentPage}
+  {path: '/pagos/error',component:ErrorPaymentPage},
+  {path: '/categorias/:name',component:CategoriesProducts}
 
 ]
 

@@ -3,7 +3,7 @@
         <div v-for="(item, index) in props.productList" :key="index" class="group">
             <div class="relative overflow-hidden">
                 <router-link :to="`/product-details/${item.idProduct}`">
-                    <img class="w-full transform group-hover:scale-110 duration-300" :src="'http://localhost:8080/' + item.image_url" alt="shop"/>
+                    <img class="w-full transform group-hover:scale-110 duration-300" :src="`${apiUrl}/` + item.image_url" alt="shop"/>
                 </router-link>               
             </div>
             <div class="md:px-2 lg:px-4 xl:px-6 lg:pt-6 pt-5 flex gap-4 md:gap-5 flex-col">
@@ -46,6 +46,8 @@ import 'vue3-toastify/dist/index.css';
 const localOffers = ref({});
 const userStore = useUserStore();
 const route = useRouter();
+
+const apiUrl = process.env.VUE_APP_API_URL || 'http://localhost:8080'
 
 const props = defineProps({
     productList:Object,

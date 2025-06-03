@@ -23,7 +23,7 @@
             <div>
                 <div class="pr-4 md:pr-5 wishlist-item">
                     <router-link  v-for="item in wishlist.wishlist" v-bind:key="item.idWishList" :to="`/product-details/${item.idProduct}`" class="flex items-center gap-[15px] relative pb-[15px] mb-[15px] border-b border-bdr-clr dark:border-bdr-clr-drk" >
-                        <img class="w-[70px] md:w-auto" :src="'http://localhost:8080/' + item.image_url" alt="wishlist" style="width:80px"/>
+                        <img class="w-[70px] md:w-auto" :src="`${apiUrl}/` + item.image_url" alt="wishlist" style="width:80px"/>
                         <div>
                             <div class="flex items-center gap-2">
                                 <span class="w-[6px] h-[6px] rounded-full bg-primary"></span>
@@ -57,7 +57,7 @@
                 <div class="hdr-cart-item">
                     <div v-for="item in cart.carrito" :key="item.idProduct" class="flex gap-[15px] relative pb-[15px] mb-[15px] border-b border-bdr-clr dark:border-bdr-clr-drk group">
                         <router-link :to="`/product-details/${item.idProduct}`" class="block">
-                            <img class="w-[70px] md:w-auto h-full" :src="'http://localhost:8080/' + item.image_url" alt="cart" style="width:80px"/>
+                            <img class="w-[70px] md:w-auto h-full" :src="`${apiUrl}/` + item.image_url" alt="cart" style="width:80px"/>
                         </router-link>
                         <div>
                             <div class="flex items-center gap-2">
@@ -114,6 +114,8 @@
     const cart = useCartStore();
     const wishlist = useWishlistStore();
     const usermenu = ref(false);
+    
+    const apiUrl = process.env.VUE_APP_API_URL || 'http://localhost:8080'
 
     const props = defineProps({
         toggle: Boolean

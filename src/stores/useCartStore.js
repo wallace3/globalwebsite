@@ -4,8 +4,6 @@ import { ref, computed} from 'vue'
 import { useUserStore } from '@/stores/userStore'
 import axios from 'axios'
 
-console.log(import.meta.env);
-
 export const useCartStore = defineStore('cart', () => {
   // Intenta cargar desde cookies
   const carrito = ref([])

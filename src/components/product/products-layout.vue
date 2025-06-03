@@ -3,7 +3,7 @@
         <div v-for="(item, index) in productList" :key="index" class="group">
             <div class="relative overflow-hidden">
                 <router-link :to="`/product-details/${item.idProduct}`">
-                    <img class="w-full transform group-hover:scale-110 duration-300" :src="'http://localhost:8080/' + item.image_url" alt="shop"/>
+                    <img class="w-full transform group-hover:scale-110 duration-300" :src="`${apiUrl}/` + item.image_url" alt="shop"/>
                 </router-link>
 
                 <!--<div v-if="item.tag === 'Hot Sale'" class="absolute z-10 top-7 left-7 pt-[10px] pb-2 px-3 bg-[#1CB28E] rounded-[30px] font-primary text-[14px] text-white font-semibold leading-none">
@@ -65,6 +65,7 @@
     const user = useUserStore();
     const cart = useCartStore();
     const wishlist = useWishlistStore();
+    const apiUrl = process.env.VUE_APP_API_URL || 'http://localhost:8080'
 
     defineProps({
         productList:Array,

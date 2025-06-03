@@ -23,7 +23,7 @@
                         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-6 lg::gap-8">
                             <div v-for="item in wishlist.wishlist" v-bind:key="item.idWishlist" class="group" data-aos="fade-up" data-aos-delay="100">
                                 <div class="relative overflow-hidden group z-[5] before:absolute before:w-full before:h-full before:top-0 before:left-0 before:bg-title before:opacity-0 before:duration-300 before:z-[5] hover:before:opacity-80">
-                                    <img class="w-full transform duration-300 group-hover:scale-110" :src="'http://localhost:8080/' + item.image_url" alt="product-card">
+                                    <img class="w-full transform duration-300 group-hover:scale-110" :src="`${apiUrl}/` + item.image_url" alt="product-card">
 
                                     <div class="absolute z-10 top-1/2 left-1/2 transform -translate-y-2/4 -translate-x-2/4 flex gap-2">
                                         <router-link to="" class="w-9 lg:w-12 h-9 p-2 lg:h-12 bg-white dark:bg-title bg-opacity-10 flex items-center justify-center transform translate-y-8 opacity-0 transition-all group-hover:duration-500 group-hover:opacity-100 group-hover:translate-y-0 relative tooltip-icon">
@@ -73,6 +73,7 @@
 
     import { useWishlistStore } from '@/stores/useWishlistStore';
     import { useCartStore } from '@/stores/useCartStore';
+    const apiUrl = process.env.VUE_APP_API_URL || 'http://localhost:8080'
 
     const wishlist = useWishlistStore();
     const cart = useCartStore();

@@ -32,36 +32,25 @@
                                 <div class="grid sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-5 sm:gap-6">
                                     <div>
                                         <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2.5 block">Nombre completo</label>
-                                        <input class="w-full h-12 md:h-14 bg-snow dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" type="text" placeholder="Ingresa tú nombre completo">
+                                        <input v-model="name" class="w-full h-12 md:h-14 bg-snow dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" type="text" placeholder="Ingresa tú nombre completo">
                                     </div>
                                     <div>
                                         <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2.5 block">Correo electrónico</label>
-                                        <input class="w-full h-12 md:h-14 bg-snow dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" type="email" placeholder="Ingresa tu correo electrónico">
+                                        <input v-model="email" class="w-full h-12 md:h-14 bg-snow dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" type="email" placeholder="Ingresa tu correo electrónico">
                                     </div>
                                     <div>
                                         <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2.5 block">Teléfono.</label>
-                                        <input class="w-full h-12 md:h-14 bg-snow dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" type="number" placeholder="Ingresa tú teléfono">
-                                    </div>
-                                    <div>
-                                        <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2.5 block">Asunto</label>
-                                        <div class="nice-select select-active bg-snow dark:bg-dark-secondary" :class="isOpen ? 'open' : ''" @click="toggleDropdown">
-                                            <span class="current">{{ selectedOption }}</span>
-                                            <ul class="list">
-                                                <li v-for="(item, index) in options" :key="index" data-value="1" class="option" @click="handleSelect(item, $event)">
-                                                    {{ item }}
-                                                </li>
-                                            </ul>
-                                        </div>
+                                        <input v-model="phone" class="w-full h-12 md:h-14 bg-snow dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" type="number" placeholder="Ingresa tú teléfono">
                                     </div>
                                 </div>
                                 <div class="mt-5 sm:gap-6">
                                     <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2.5 block">Mensaje</label>
-                                    <textarea class="w-full h-28 md:h-[170px] bg-snow dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" name="Message" placeholder="Escribe tú mensaje"></textarea>
+                                    <textarea v-model="message" class="w-full h-28 md:h-[170px] bg-snow dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" name="Message" placeholder="Escribe tú mensaje"></textarea>
                                 </div>
                                 <div class="mt-5">
-                                    <router-link to="#" class="btn btn-solid" data-text="Emviar">
+                                    <button type="button" class="btn btn-solid" data-text="Enviar" @click="sendEmail">
                                         <span>Enviar</span>
-                                    </router-link>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -86,29 +75,53 @@
     import Aos from 'aos';
     import FooterOne from '@/components/footer/footer-one.vue';
     import ScrollToTop from '@/components/scroll-to-top.vue';
+    import { toast } from 'vue3-toastify';
+    import 'vue3-toastify/dist/index.css';
 
     onMounted(()=>{
         Aos.init()
     })
 
-    const isOpen = ref(false)
-    const selectedOption = ref('Productos')
+  
+    const name = ref('');
+    const message = ref('');
+    const phone = ref('');
+    const email = ref('');
+    const apiUrl = process.env.VUE_APP_API_URL || 'http://localhost:8080'
 
-    const options = [
-        "Queja",
-        "Sugerencia",
-        "Compras",
-        "Subastas",
-        "Productos",
-    ];
+    const sendEmail = async() => {
+        try{
+            const result = await fetch(`${apiUrl}/contact/send`,{
+                method: "POST",
+                headers:{
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email:email.value, phone:phone.value, message:message.value, name:name.value})
+            });
 
-    const toggleDropdown = () =>{
-        isOpen.value = !isOpen.value
+            if(!result.ok){
+                throw new Error("Error al enviar correo");
+            }
+
+            showToast('Correo enviado correctamente, en breve estamos contigo', {
+                type: 'success',
+                autoClose: 5000,
+                position: 'top-right',
+                pauseOnHover: true
+            })
+
+            name.value = '';
+            message.value = '';
+            phone.value = '';
+            email.value = '';
+
+        }catch(error){
+            console.log(error);
+        }
     }
 
-    const handleSelect = (option,event) => {
-        event.stopPropagation();
-        selectedOption.value = option
-        isOpen.value = false
-    }
+    const showToast = (message, options = {}) => {
+        toast(message, options)
+    } 
+
 </script>

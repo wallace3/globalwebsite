@@ -30,7 +30,7 @@
                                     <td class="w-[42%]">
                                         <div class="flex items-center gap-3 md:gap-4 lg:gap-6 cart-product">
                                             <div class="w-14 sm:w-20 flex-none py-3">
-                                                <img :src="'http://localhost:8080/' + item.image_url" alt="product">
+                                                <img :src="`${apiUrl}/` + item.image_url" alt="product">
                                             </div>
                                             <div class="flex-1">
                                                 <h6 class="leading-none font-medium">{{ item.name }}</h6>
@@ -154,6 +154,8 @@
     import bg from '@/assets/img/shortcode/breadcumb.jpg'
 
     import Aos from 'aos';
+
+    const apiUrl = process.env.VUE_APP_API_URL || 'http://localhost:8080'
 
     function quitarProducto(id) {
         cart.quitar(id)

@@ -121,8 +121,8 @@
                         }"
                         class="owl-carousel hv1-pdct-ctgry-slider block"> 
                         <swiper-slide v-for="(item, index) in categories" :key="index" class="relative block">
-                            <router-link :to="`categories/${item.name}`">
-                                <img class="w-full object-cover" :src="'http://localhost:8080/' + item.url" alt="product"/>
+                            <router-link :to="`categorias/${item.name}`">
+                                <img class="w-full object-cover" :src="`${apiUrl}/` + item.url" alt="product"/>
                                 <div class="absolute bottom-7 left-0 px-5 transform w-full flex justify-start">
                                     <div class="p-[15px] bg-white dark:bg-title w-auto">
                                         <span class="md:text-xl text-primary font-medium leading-none">{{item.total_productos}} productos</span>

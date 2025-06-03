@@ -29,7 +29,7 @@
                 class="owl-carousel portfolio-v1-slider relative mx-auto block" data-carousel-animateout="false" data-carousel-loop="true">
                 <SwiperSlide v-for="item in auctions" :key="item.idAuction" data-carousel-animateout="false" data-carousel-loop="true">
                     <router-link :to="`/subasta/productos/${item.idAuction}`">
-                        <img class="w-full object-cover" :src="'http://localhost:8080/' + item.image_url" alt="Portfolio"/>
+                        <img class="w-full object-cover" :src="`${apiUrl}/` + item.image_url" alt="Portfolio"/>
                         <span v-if="item.remaining && !item.isExpired" class="item-name-background end-date">
                             <p>FINALIZA EN: </p>
                             <p> {{ item.remaining.days }}d {{ item.remaining.hours }}h {{ item.remaining.minutes }}m {{ item.remaining.seconds }}s</p>
