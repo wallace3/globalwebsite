@@ -22,11 +22,12 @@ cargarDelServidor();
 const agregar = async (producto) => {
   const userStore = useUserStore();
   if (!carrito.value.some(p => p.idProduct === producto.idProduct)) {
-      carrito.value.push(producto)
+      console.log(carrito);
         await axios.post(`${apiUrl}/cart`, {
           idUser: userStore.user.user.idUser,
           idProduct: producto.idProduct
     })
+    await cargarDelServidor();
   }
 }
 

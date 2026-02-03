@@ -6,16 +6,16 @@
             <div class="w-1/2 hidden md:block lg:flex-1">
                 <img class="h-full object-cover" :src="loginImg" alt="login">
             </div>
-            <div class="w-full md:w-1/2 lg:max-w-lg xl:max-w-3xl lg:w-full py-16 px-[20px] sm:px-8 lg:p-16 xl:p-24 relative z-10 flex items-center overflow-hidden">
+            <div class="w-full md:w-1/2 lg:max-w-lg xl:max-w-3xl lg:w-full py-16 px-[20px] sm:px-8 lg:p-16 xl:p-24 relative z-10 flex items-center overflow-hidden login-div">
                 <div class="mx-auto md:mx-0 max-w-md">
-                    <h2 class="leading-none" data-aos="fade-up">Inicio de sesión</h2>
-                    <p class="text-lg mt-[15px]" data-aos="fade-up" data-aos-delay="100">Inicia sesión y obtén la posibilidad de adquirir piezas únicas.</p>
+                    <h2 class="leading-none text-white-global" data-aos="fade-up" >Inicio de sesión</h2>
+                    <p class="text-lg mt-[15px] text-white-global" data-aos="fade-up" data-aos-delay="100">Inicia sesión y obtén la posibilidad de adquirir piezas únicas.</p>
                     <div class="mt-7" data-aos="fade-up" data-aos-delay="200">
-                        <label class="text-base sm:text-lg font-medium leading-none mb-2.5 block dark:text-white">Correo electrónico</label>
+                        <label class="text-base sm:text-lg font-medium leading-none mb-2.5 block dark:text-white text-white-global">Correo electrónico</label>
                         <input v-model="email" class="w-full h-12 md:h-14 bg-white dark:bg-transparent border border-bdr-clr focus:border-primary p-4 outline-none duration-300" type="email" placeholder="Ingresa tu correo">
                     </div>
                     <div class="mt-5" data-aos="fade-up" data-aos-delay="300">
-                        <label class="text-base sm:text-lg font-medium leading-none mb-2.5 block dark:text-white">Password</label>
+                        <label class="text-base sm:text-lg font-medium leading-none mb-2.5 block dark:text-white text-white-global">Password</label>
                         <input v-model="password" class="w-full h-12 md:h-14 bg-white dark:bg-transparent border border-bdr-clr focus:border-primary p-4 outline-none duration-300 placeholder:text-xl placeholder:transform placeholder:translate-y-[10px]" type="password" placeholder="* * * * * * * *">
                     </div>
                     <div data-aos="fade-up" data-aos-delay="500">
@@ -88,3 +88,12 @@
         Aos.init()
     })
 </script>
+<style>
+.login-div{
+    background: #f6b841;
+}
+
+.text-white-global{
+    color:white;
+}
+</style>

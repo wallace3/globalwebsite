@@ -34,7 +34,6 @@
                                             </div>
                                             <div class="flex-1">
                                                 <h6 class="leading-none font-medium">{{ item.name }}</h6>
-                                                <h5 class="font-semibold leading-none mt-2"><router-link to="#">{{ item.description }}</router-link></h5>
                                             </div>
                                         </div>
                                     </td>
@@ -124,7 +123,7 @@
                             </div>
                         </div>
                         <div class="sm:mt-[10px] py-5 flex items-end gap-3 flex-wrap justify-end">
-                            <router-link to="/shop-v1" class="btn btn-sm btn-outline !text-title hover:!text-white before:!z-[-1] dark:!text-white dark:hover:!text-title">
+                            <router-link to="/productos" class="btn btn-sm btn-outline !text-title hover:!text-white before:!z-[-1] dark:!text-white dark:hover:!text-title">
                                 Continuar Comprando
                             </router-link>
                             <router-link to="/checkout" class="btn btn-sm btn-theme-solid !text-white hover:!text-primary before:!z-[-1]">

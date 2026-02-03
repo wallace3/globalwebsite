@@ -2,14 +2,14 @@
     <div :class="classList">
         <div v-for="(item, index) in props.productList" :key="index" class="group">
             <div class="relative overflow-hidden">
-                <router-link :to="`/product-details/${item.idProduct}`">
+                <router-link :to="`/detalles-producto/${item.idProduct}`">
                     <img class="w-full transform group-hover:scale-110 duration-300" :src="`${apiUrl}/` + item.image_url" alt="shop"/>
                 </router-link>               
             </div>
             <div class="md:px-2 lg:px-4 xl:px-6 lg:pt-6 pt-5 flex gap-4 md:gap-5 flex-col">
                 <div>
                     <h5 class="font-normal dark:text-white text-xl leading-[1.5]">
-                        <router-link :to="`/product-details/${item.idProduct}`" class="text-underline">
+                        <router-link :to="`/detalles-producto/${item.idProduct}`" class="text-underline">
                             {{item.name}}
                         </router-link>
                     </h5>

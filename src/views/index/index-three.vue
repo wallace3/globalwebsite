@@ -114,7 +114,7 @@
                                 </span>
                             </button>
 
-                            <router-link to="/cart" class="w-9 lg:w-12 h-9 p-2 lg:h-12 bg-white dark:bg-title bg-opacity-80 flex items-center justify-center relative tooltip-icon rounded-full">
+                            <router-link to="/carrito" class="w-9 lg:w-12 h-9 p-2 lg:h-12 bg-white dark:bg-title bg-opacity-80 flex items-center justify-center relative tooltip-icon rounded-full">
                                 <i class="mdi mdi-shopping-outline dark:text-white text-[24px]"></i>
                                 <span class="p-2 bg-white dark:bg-title text-xs text-title dark:text-white absolute -top-[60px] left-1/2 transform -translate-x-1/2 whitespace-nowrap rounded-[4px] opacity-0 invisible duration-300">Add to Cart
                                     <span class="w-3 h-3 bg-white dark:bg-title absolute -bottom-[6px] left-1/2 transform -translate-x-1/2 rotate-45"></span>

@@ -22,10 +22,10 @@ export const useUserStore = defineStore('user', {
 
     },
     logout() {
-      this.user = null
-      this.isAuthenticated = false
-      localStorage.removeItem('user')
-      window.location.reload()
+      this.user = null;
+      this.isAuthenticated = false;
+      localStorage.removeItem('user');
+      window.location.href = '/';
     }
   }
 })

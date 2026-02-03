@@ -23,6 +23,7 @@
     "pinia": "^3.0.2",
     "swiper": "^11.2.0",
     "vue": "^3.2.13",
+    "vue-gtag": "^3.5.1",
     "vue-owl-carousel": "^2.0.3",
     "vue-router": "^4.0.3",
     "vue-stripe-js": "^2.0.2",

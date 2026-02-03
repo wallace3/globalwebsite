@@ -78,7 +78,7 @@
         }
     }
 
-      onMounted(()=>{
+    onMounted(()=>{
         Aos.init()
         getProducts();
         getCategories();

@@ -81,7 +81,7 @@
                                     <li :class="current === '/shop-v3' ? 'active' : ''"><router-link to="/shop-v3">Shop Layout 03</router-link></li>
                                     <li :class="current === '/shop-v4' ? 'active' : ''"><router-link to="/shop-v4">Shop Layout 04</router-link></li>
                                     <li :class="current === '/product-details' ? 'active' : ''"><router-link to="/product-details">Product Details</router-link></li>
-                                    <li :class="current === '/cart' ? 'active' : ''"><router-link to="/cart">My Cart</router-link></li>
+                                    <li :class="current === '/cart' ? 'active' : ''"><router-link to="/carrito">My Cart</router-link></li>
                                     <li :class="current === '/checkout' ? 'active' : ''"><router-link to="/checkout">Checkout</router-link></li>
                                 </ul>
                             </li>

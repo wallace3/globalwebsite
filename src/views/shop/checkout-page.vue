@@ -15,7 +15,7 @@
 
         <div class="s-py-100">
             <div class="container">
-                <div class="max-w-[1220px] mx-auto grid lg:grid-cols-2 gap-[30px] lg:gap-[70px]">
+                <div class="max-w-[1220px] mx-auto ">
                     <div data-aos="fade-up" data-aos-delay={200}>
                         <div class="bg-[#FAFAFA] dark:bg-dark-secondary pt-[30px] md:pt-[40px] lg:pt-[50px] px-[30px] md:px-[40px] lg:px-[50px] pb-[30px] border border-[#17243026] border-opacity-15 rounded-xl">   
                             <h4 class="font-semibold leading-none text-xl md:text-2xl mb-6 md:mb-10">
@@ -29,13 +29,10 @@
                                         </div>
                                         <div class="flex-1">
                                             <h6 class="leading-none font-medium">{{ item.name }}</h6>
-                                            <h5 class="font-semibold leading-none mt-2">
-                                                <router-link to="#">{{ item.description }}</router-link>
-                                            </h5>
                                         </div>
                                     </div>
                                 
-                                    <h6 class="leading-none">$ {{ item.price }}</h6>
+                                    <h6 class="leading-none">$ {{ formatPrice(item.price) }}</h6>
                                 </div>
                             </div>
                             <div class="mt-6 pt-6 border-t border-bdr-clr dark:border-bdr-clr-drk text-right flex justify-end flex-col w-full ml-auto mr-0">
@@ -65,7 +62,7 @@
                                 </label>
                             </div>
                             <div class="mt-4 md:mt-6 flex flex-wrap gap-3">
-                                <router-link to="cart" class="btn btn-outline" data-text="Regresar al carrito"><span>Regresar</span></router-link>
+                                <router-link to="carrito" class="btn btn-outline" data-text="Regresar al carrito"><span>Regresar</span></router-link>
                                 <button type="button" class="btn btn-theme-solid" data-text="Ir al pago" @click="checkout"><span>Pagar</span></button>
                             </div>
                         </div>
@@ -95,11 +92,19 @@
     import Aos from 'aos';
 
     const user = useUserStore();
+<<<<<<< Updated upstream
     const stripePublicKey = process.env.VUE_APP_STRIPE_PUBLIC_KEY;
     const stripePromise = loadStripe(stripePublicKey);
+=======
+    const stripePromise = loadStripe('pk_live_51RRhZsEEk2wvGozKahWSWj0o00rFJ75eJX7aeUIUm7BAcp9idrLdwBwMpGvCk1vw9rCKp1zs5z8KKZ3AF5FqRDDS00aqiDBvaY');
+>>>>>>> Stashed changes
     const cart = useCartStore();
     const { carrito } = storeToRefs(cart) // tu 
     const apiUrl = process.env.VUE_APP_API_URL || 'http://localhost:8080'
+
+    const formatPrice = (value) => {
+        return new Intl.NumberFormat('es-MX').format(value);
+    };
     
     const checkout = async () => {
         const itemsToSend = carrito.value.map(item => ({

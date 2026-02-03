@@ -6,7 +6,7 @@
                     <div class="main-logo">
                         <img class="sm:mx-auto w-[150px] sm:w-auto" :src="logoG" alt="logo">
                         <p class="mt-4 text-white-light max-w-[522px] sm:mx-auto">Global trade & auctions, es un servicio donde puedes encontrar excelentes piezas y ofertar las tuyas. </p>
-                        <div class="flex items-center sm:justify-center gap-4 mt-6">
+                        <!--<div class="flex items-center sm:justify-center gap-4 mt-6">
                             <router-link to="#" class="w-10 h-10 rounded-full border border-white border-opacity-50 flex items-center justify-center group hover:border-primary duration-300" aria-label="Facebook">
                                 <svg class="fill-current text-white group-hover:text-primary duration-300 " width="9" height="17" viewBox="0 0 9 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path opacity="0.7" d="M6.60577 3.57091H8.06641V1.01793C7.35979 0.939731 6.64934 0.901696 5.93845 0.904012C5.44674 0.875673 4.9548 0.955623 4.49713 1.13826C4.03945 1.32089 3.6271 1.60179 3.28898 1.96127C2.95087 2.32075 2.69516 2.7501 2.5398 3.21924C2.38443 3.68838 2.33316 4.18596 2.38957 4.67708V6.92589H0.0664062V9.78076H2.38957V16.9578H5.2382V9.78076H7.46831L7.8224 6.92589H5.2382V4.95961C5.23934 4.13482 5.46065 3.57091 6.60577 3.57091Z"/>
@@ -31,7 +31,7 @@
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0.480469 2.0859C0.480469 1.06647 1.29632 0.239258 2.30175 0.239258C3.30655 0.239258 4.1224 1.06647 4.12303 2.0859C4.12303 3.10533 3.30718 3.94984 2.30175 3.94984C1.29632 3.94984 0.480469 3.10533 0.480469 2.0859ZM15.6461 15.6177V15.6171H15.6498V9.97722C15.6498 7.21814 15.064 5.09277 11.8828 5.09277C10.3535 5.09277 9.32718 5.94369 8.90819 6.7504H8.86396V5.35036H5.84766V15.6171H8.98845V10.5334C8.98845 9.19486 9.2387 7.90054 10.8736 7.90054C12.4844 7.90054 12.5084 9.42809 12.5084 10.6192V15.6177H15.6461ZM0.734375 5.3501H3.87896V15.6168H0.734375V5.3501Z" />
                                 </svg>
                             </router-link>
-                        </div>
+                        </div>-->
                     </div>
 
                   

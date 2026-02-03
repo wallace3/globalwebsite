@@ -43,7 +43,7 @@
                                     <h4 class="font-medium leading-none dark:text-white text-lg">{{item.price}}</h4>
                                     <div>
                                         <h5 class="font-normal dark:text-white text-xl leading-[1.5]">
-                                            <router-link :to="`/product-details/${item.idProduct}`"  class="text-underline">{{item.name}}</router-link>
+                                            <router-link :to="`/detalles-producto/${item.idProduct}`"  class="text-underline">{{item.name}}</router-link>
                                         </h5>
                                     </div>
                                 </div>

@@ -19,13 +19,13 @@ const cargarDelServidor = async () => {
 cargarDelServidor();
 
 const agregar = async (producto) => {
-    const userStore = useUserStore();
-    if (!wishlist.value.some(p => p.idProduct === producto.idProduct)) {
-      wishlist.value.push(producto)
-        await axios.post(`${apiUrl}/wishlist`, {
-          idUser: userStore.user.user.idUser,
-          idProduct: producto.idProduct
+  const userStore = useUserStore();
+  if (!wishlist.value.some(p => p.idProduct === producto.idProduct)) {
+    await axios.post(`${apiUrl}/wishlist`, {
+      idUser: userStore.user.user.idUser,
+      idProduct: producto.idProduct
     })
+    await cargarDelServidor();
   }
 }
 

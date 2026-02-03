@@ -22,8 +22,10 @@
             <h4 class="font-medium leading-none dark:text-white mb-4 text-xl md:text-2xl">Lista de deseos</h4>
             <div>
                 <div class="pr-4 md:pr-5 wishlist-item">
-                    <router-link  v-for="item in wishlist.wishlist" v-bind:key="item.idWishList" :to="`/product-details/${item.idProduct}`" class="flex items-center gap-[15px] relative pb-[15px] mb-[15px] border-b border-bdr-clr dark:border-bdr-clr-drk" >
-                        <img class="w-[70px] md:w-auto" :src="`${apiUrl}/` + item.image_url" alt="wishlist" style="width:80px"/>
+                    <div v-for="item in wishlist.wishlist" v-bind:key="item.idWishList"  class="flex items-center gap-[15px] relative pb-[15px] mb-[15px] border-b border-bdr-clr dark:border-bdr-clr-drk">
+                        <router-link :to="`/detalles-producto/${item.idProduct}`">
+                            <img class="w-[70px] md:w-auto" :src="`${apiUrl}/` + item.image_url" alt="wishlist" style="width:80px"/>
+                        </router-link>
                         <div>
                             <div class="flex items-center gap-2">
                                 <span class="w-[6px] h-[6px] rounded-full bg-primary"></span>
@@ -38,7 +40,7 @@
                                 </svg>
                             </button>
                         </div>
-                    </router-link>
+                    </div>
                 </div>
                 <div class="mt-6 md:mt-10">
                     <router-link to="/wishlist" class="btn btn-outline btn-sm w-full" data-text="View All Wishlist">
@@ -56,7 +58,7 @@
             <div>
                 <div class="hdr-cart-item">
                     <div v-for="item in cart.carrito" :key="item.idProduct" class="flex gap-[15px] relative pb-[15px] mb-[15px] border-b border-bdr-clr dark:border-bdr-clr-drk group">
-                        <router-link :to="`/product-details/${item.idProduct}`" class="block">
+                        <router-link :to="`/detalles-producto/${item.idProduct}`" class="block">
                             <img class="w-[70px] md:w-auto h-full" :src="`${apiUrl}/` + item.image_url" alt="cart" style="width:80px"/>
                         </router-link>
                         <div>
@@ -65,7 +67,7 @@
                                 <span class="text-[14px] md:text-[15px] leading-none block">$ {{ item.price }}</span>
                             </div>
                             <h6 class="text-base md:text-lg font-semibold !leading-none mt-[10px]">
-                                <router-link to="/product-details">{{ item.name }}</router-link>
+                                <router-link :to="`/detalles-producto/${item.idProduct}`">{{ item.name }}</router-link>
                             </h6>
                         </div>
                         <div class="wishList_item_close absolute top-0 right-0 w-6 h-6 flex items-center justify-center bg-title dark:bg-white bg-opacity-10 dark:bg-opacity-10 group hover:bg-primary dark:hover:bg-primary opacity-0 group-hover:opacity-100 text-title dark:text-white duration-300 hover:text-white">
@@ -79,7 +81,7 @@
                 <div class="pt-5 md:pt-[30px] mt-5 md:mt-[30px] border-t border-bdr-clr dark:border-bdr-clr-drk">
                     <h4 class="mb-5 md:mb-[30px] font-medium !leading-none text-lg md:text-xl text-right">Subtotal : {{ cart.total }}</h4>
                     <div class="grid grid-cols-2 gap-4">
-                        <router-link to="/cart" class="btn btn-outline btn-sm" data-text="Ver Carrito">
+                        <router-link to="/carrito" class="btn btn-outline btn-sm" data-text="Ver Carrito">
                             <span>Ver Carrito</span>
                         </router-link>
                         <router-link to="/checkout" class="btn btn-theme-solid btn-sm" data-text="Finalizar Compra">
@@ -108,8 +110,10 @@
     import { useCartStore } from '@/stores/useCartStore'
     import { useWishlistStore } from '@/stores/useWishlistStore'
     import { useUserStore } from '@/stores/userStore';
+    import { useRouter } from 'vue-router'
 
 
+    const router = useRouter()
     const user = useUserStore()
     const cart = useCartStore();
     const wishlist = useWishlistStore();
@@ -123,6 +127,7 @@
 
     function logout(){
         user.logout()
+        router.push('/')
     }
 
     function quitarProducto(id) {

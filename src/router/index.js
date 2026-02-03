@@ -53,6 +53,7 @@ import AuctionProductsPage from '@/views/auctions/products-page.vue'
 import SuccessPaymentPage from '@/views/payments/success-page.vue'
 import ErrorPaymentPage from '@/views/payments/error-page.vue'
 import CategoriesProducts from '@/views/shop/categories-products.vue'
+import FacturaPage from '@/views/profile/factura-page.vue'
 
 
 const routes = [
@@ -97,8 +98,8 @@ const routes = [
   {path: '/shop-v3',component:ShopV3},
   {path: '/shop-v4',component:ShopV4},
   {path: '/product-details',component:ProductDetails},
-  {path: '/product-details/:id',component:ProductDetails},
-  {path: '/cart',component:ShopCart},
+  {path: '/detalles-producto/:id',component:ProductDetails},
+  {path: '/carrito',component:ShopCart},
   {path: '/checkout',component:CheckoutPage},
   {path: '/blog-v1',component:BlogV1},
   {path: '/blog-v2',component:BlogV2},
@@ -116,7 +117,8 @@ const routes = [
   {path: '/index-two',component:IndexThree},
   {path: '/pagos/exito',component:SuccessPaymentPage},
   {path: '/pagos/error',component:ErrorPaymentPage},
-  {path: '/categorias/:name',component:CategoriesProducts}
+  {path: '/categorias/:name',component:CategoriesProducts},
+  {path: '/factura',component:FacturaPage},
 
 ]
 

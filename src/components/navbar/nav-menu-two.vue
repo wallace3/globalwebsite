@@ -293,7 +293,7 @@
                 <div class="pt-5 md:pt-[30px] mt-5 md:mt-[30px] border-t border-bdr-clr dark:border-bdr-clr-drk">
                     <h4 class="mb-5 md:mb-[30px] font-medium !leading-none text-lg md:text-xl text-right">Subtotal : $870</h4>
                     <div class="grid grid-cols-2 gap-4">
-                        <router-link to="/cart" class="btn btn-outline btn-sm" data-text="View Cart">
+                        <router-link to="/carrito" class="btn btn-outline btn-sm" data-text="View Cart">
                             <span>View Cart</span>
                         </router-link>
                         <router-link to="/checkout" class="btn btn-theme-solid btn-sm" data-text="Checkout">

@@ -2,7 +2,7 @@
     <div :class="classList">
         <div v-for="(item, index) in productList" :key="index" class="group">
             <div class="relative overflow-hidden">
-                <router-link :to="`/product-details/${item.idProduct}`">
+                <router-link :to="`/detalles-producto/${item.idProduct}`">
                     <img class="w-full transform group-hover:scale-110 duration-300" :src="`${apiUrl}/` + item.image_url" alt="shop"/>
                 </router-link>
 
@@ -17,25 +17,21 @@
                 </div>
                
                 <div class="absolute z-10 top-[50%] right-3 transform -translate-y-[40%] opacity-0 duration-300 transition-all group-hover:-translate-y-1/2 group-hover:opacity-100 flex flex-col items-end gap-3">
-                    <router-link to="#" class="bg-white dark:bg-title dark:text-white bg-opacity-80 flex items-center justify-center gap-2 px-4 py-[10px] text-base leading-none text-title rounded-[40px] h-14 overflow-hidden new-product-icon">
-                        <i class="mdi mdi-cards-heart-outline dark:text-white text-[24px]"></i>                                                                  
-                       <button @click="addToWishlist(item)"><span class="mt-1">Agregar a Deseados</span></button>
-                    </router-link>
-                    <router-link to="#" class="bg-white dark:bg-title dark:text-white bg-opacity-80 flex items-center justify-center gap-2 px-4 py-[10px] text-base leading-none text-title rounded-[40px] h-14 overflow-hidden new-product-icon">
-                        <i class="mdi mdi-shopping-outline dark:text-white text-[24px]"></i>     
-                        <button @click="addToCart(item)"><span class="mt-1">Agregar a carrito</span></button>
-                    </router-link>
-                    <button class="bg-white dark:bg-title dark:text-white bg-opacity-80 flex items-center justify-center gap-2 px-4 py-[10px] text-base leading-none text-title rounded-[40px] h-14 overflow-hidden new-product-icon quick-view">
-                        <i class="mdi mdi-eye-outline dark:text-white text-[24px]"></i>                                       
-                        <span class="mt-1">Quick View</span>
+                    <button @click="addToWishlist(item)" class="bg-white dark:bg-title dark:text-white bg-opacity-80 flex items-center justify-center gap-2 px-4 py-[10px] text-base leading-none text-title rounded-[40px] h-14 overflow-hidden new-product-icon">
+                        <i class="mdi mdi-cards-heart-outline dark:text-white text-[24px]"></i>   
+                        <span class="mt-1">Agregar a Deseados</span>
+                    </button>
+                    <button @click="addToCart(item)" class="bg-white dark:bg-title dark:text-white bg-opacity-80 flex items-center justify-center gap-2 px-4 py-[10px] text-base leading-none text-title rounded-[40px] h-14 overflow-hidden new-product-icon">
+                        <i class="mdi mdi-shopping-outline dark:text-white text-[24px]"></i>   
+                        <span class="mt-1">Agregar a carrito</span>
                     </button>
                 </div>
             </div>
             <div class="md:px-2 lg:px-4 xl:px-6 lg:pt-6 pt-5 flex gap-4 md:gap-5 flex-col">
-                <h4 class="font-medium leading-none dark:text-white text-lg">{{item.price}}</h4>
+                <h4 class="font-medium leading-none dark:text-white text-lg">$ {{ formatPrice(item.price)}}</h4>
                 <div>
                     <h5 class="font-normal dark:text-white text-xl leading-[1.5]">
-                        <router-link :to="`/product-details/${item.id}`" class="text-underline">
+                        <router-link :to="`/detalles-producto/${item.idProduct}`" class="text-underline">
                             {{item.name}}
                         </router-link>
                     </h5>
@@ -115,5 +111,9 @@
         }
         wishlist.agregar(producto);
     }
+
+    const formatPrice = (value) => {
+        return new Intl.NumberFormat('es-MX').format(value);
+    };
 
 </script>

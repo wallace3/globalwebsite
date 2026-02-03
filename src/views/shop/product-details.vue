@@ -18,35 +18,40 @@
             <div class="container-fluid">
                 <div class="max-w-[1720px] mx-auto flex justify-between gap-10 flex-col lg:flex-row">
                     <div class="w-full lg:w-[58%]">
-                        <div class="relative product-dtls-wrapper">
-                            <div class="product-dtls-slider ">
-                                <div v-if="images.length > 0">
-                                    <img 
-                                        :src="`${apiUrl}/` + images[activeImage].url" 
-                                        alt="product" 
-                                        class="w-full"
-                                    >
-                                </div>
+                        <div class="flex gap-4">
+                        <!-- Miniaturas -->
+                        <div class="flex flex-col gap-2 w-24 overflow-y-auto max-h-[500px] thumb-scroll">
+                            <div
+                            v-for="(item, index) in images"
+                            :key="index"
+                            class="cursor-pointer border-2 rounded"
+                            :class="activeImage === index ? 'border-blue-500' : 'border-transparent'"
+                            @click="activeImage = index"
+                            >
+                            <img
+                                :src="`${apiUrl}/${item.url}`"
+                                alt="miniatura"
+                                class="w-full h-20 object-cover rounded"
+                            />
+                            </div>
+                        </div>
 
-                            </div>
-                            <div class="product-dtls-nav">
-                                <div v-for="(item, index) in images" :key="index">
-                                    <img 
-                                    :src="`${apiUrl}/` + item.url" 
-                                    @click="activeImage = index" 
-                                    alt="product" 
-                                    class="mb-2 cursor-pointer border"
-                                    :class="activeImage === index ? 'border-blue-500' : 'border-transparent'"
-                                    >
-                                </div>
-                            </div>
+                        <!-- Imagen principal -->
+                        <div class="flex-1">
+                            <img
+                            v-if="images.length > 0"
+                            :src="`${apiUrl}/${images[activeImage].url}`"
+                            alt="imagen principal"
+                            class="w-full h-auto object-contain rounded shadow-md"
+                            />
+                        </div>
                         </div>
                     </div>
                     <div class="lg:max-w-[635px] w-full">
                         <div class="pb-4 sm:pb-6 border-b border-bdr-clr dark:border-bdr-clr-drk">
                             <h2 class="font-semibold leading-none">{{ product.name }}</h2>
                             <div class="flex gap-4 items-center mt-[15px]">
-                                <span class="text-2xl sm:text-3xl text-primary leading-none block">${{ product.price }}</span>
+                                <span class="text-2xl sm:text-3xl text-primary leading-none block">${{ formatPrice(product.price) }}</span>
                             </div>
 
                         
@@ -161,6 +166,9 @@
         cart.agregar(producto)
     }
 
+    const formatPrice = (value) => {
+        return new Intl.NumberFormat('es-MX').format(value);
+    };
 
     function addToWishlist(producto){
         if(!user.isAuthenticated){
@@ -202,3 +210,19 @@
     const route = useRoute()
 
 </script>
+
+<style>
+.thumb-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.thumb-scroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.thumb-scroll::-webkit-scrollbar-thumb {
+  background-color: #f6b841;
+  border-radius: 4px;
+}
+</style>
